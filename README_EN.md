@@ -1,7 +1,7 @@
-# <div align="center"><a href="/README.md">Português</a> | <a href="/README_EN.md">Inglês</a></div>
+# <div align="center"><a href="/README.md">Portuguese</a> | <a href="/README_EN.md">English</a></div>
 <br><br>
-# Computação Gráfica - Sistema Solar Interativo em Escala
-Este repositório contém um Sistema Solar desenvolvido em Three.js. Meu projeto provê a interação com o Sistema Solar de forma dinâmica e informativa, respeitando escalas e distâncias reais entre os objetos. Além de incluir três "interiores" exclusivos em GLTF, um para a Terra, outro para a Lua e um para Marte.
+# Computer Graphics - Interactive Scale Model of the Solar System
+This repository contains a Solar System developed in Three.js. My project provides dynamic and informative interaction with the Solar System, respecting real scales and distances between objects. In addition, it includes three unique GLTF "interiors," one for Earth, another for the Moon, and one for Mars.
 
-### Autor
+### Author
 * Felipe Pinto da Silva
