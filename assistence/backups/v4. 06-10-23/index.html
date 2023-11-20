@@ -1,0 +1,465 @@
+<html>
+	<head>
+		<title>Sistema Solar</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<div class="button-container">
+			<button class="button" id="toggleAxesHelper">Ligar AxesHelper</button>
+			<button class="button" id="toggleGridHelper">Ligar GridHelper</button>
+		</div>
+		<script src="js/three.js/three.js"></script> <!-- three.js -->
+		<script src="js/controls/OrbitControls.js"></script> <!-- OrbitControls -->
+		<script src="js/controls/TrackballControls.js"></script> <!-- TrackballControls -->
+		<script src="js/raycaster/Raycaster.js"></script> <!-- Raycaster -->
+		<script src="js/tween/tween.umd.js"></script> <!-- Tween -->
+		<script src="js/loaders/GLTFLoader.js"></script> <!-- GLTFLoader -->
+		<script src="js/functions.js"></script> <!-- utilitarios -->
+		<script>
+			// Sistema Solar realista e interativo
+			// Autores: Felipe Pinto da Silva
+			//			Camila Ferreira
+			//			Hugo Pedro Nascimento
+
+			////////////
+			// Câmera //
+			////////////
+			
+			// Cria uma câmera com uma perspectiva de visualização
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.00001, 1000000000);
+
+			// Posição inicial da câmera
+			camera.position.x = 100;
+			camera.position.y = 100;
+			camera.position.z = 100;
+
+			////////////////////////////
+			// Configurações Iniciais //
+			////////////////////////////
+
+			// Cria uma cena 3D onde os elementos serão renderizados
+			var scene = new THREE.Scene();
+
+			// Cria um renderizador WebGL
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight ); // Define seu tamanho para preencher a janela
+			document.body.appendChild( renderer.domElement ); // Adiciona o elemento de renderização ao corpo do documento HTML
+
+			// Cria controles de órbita para interagir com a cena usando o mouse
+			var controls1 = new THREE.OrbitControls( camera, renderer.domElement );
+			controls1.enableZoom = false; // Desliga os controles de zoom do OrbitControls
+
+			// Ativando Damping para suavizar a câmera
+			controls1.enableDamping = true; // Liga o "amortecimento" da câmera
+			controls1.dampingFactor = 0.10; // Define o fator de "amortecimento"
+		
+			// Criando instância do TrackballControls e ativando apenas o zoom
+			var controls2 = new TrackballControls( camera, renderer.domElement );
+			controls2.noRotate = true; // Desliga a rotação da câmera
+			controls2.noPan = true; // Desliga o movimento de panorâmica
+			controls2.noZoom = false; // Liga o zoom
+			controls2.zoomSpeed = 1.5; // Define a velocidade do zoom
+			controls2.maxDistance = 28680000 // Distância máxima de zoom out
+
+			// Cria um guia de grid na altura da origem
+			const gridHelper = new THREE.GridHelper(20,20);
+			//scene.add(gridHelper); // Adiciona a cena
+
+			// Cria um guia para os eixos cartesianos
+			const axesHelper = new THREE.AxesHelper(1000000);
+			//scene.add(axesHelper); // Adiciona a cena
+
+			////////////////
+			// Iluminação //
+			////////////////
+
+			// Luz ambiente
+			const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+			scene.add(ambientLight); // Adiciona cena
+			
+			/* // Luz Direcional
+			const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+			directionalLight.position.set(-10, 0, 10);
+			directionalLight.target.position.set(0, 0, 0);
+			scene.add(directionalLight); // Adiciona cena */
+			// Crie uma luz PointLight
+			const pointLight = new THREE.PointLight(0xffffff, 1, 0);
+			// Defina a posição da luz (origem)
+			pointLight.position.set(0, 0, 0);
+			scene.add(pointLight);
+
+			/////////////////////////
+			// Carregando Texturas //
+			/////////////////////////
+
+			// Cria um objeto TextureLoader para carregar texturas
+			var loader = new THREE.TextureLoader();
+
+			// Carregando textura do background
+			var milkywaybg = loader.load("img/misc/background.jpg"); // Background
+
+			// Carregando texturas do sol
+			var sunColorMap = loader.load("img/sol/colorsun.jpg"); // ColorMap Sol
+
+			// Carregando textura do glow do sol
+			var glowTexture  = loader.load("img/sol/sun_glow.png"); // Glow Sol
+
+			// Carregando texturas de mercúrio
+			var mercuryColorMap = loader.load("img/planetas/mercurio/colormercury.jpg"); // ColorMap Mercúrio
+
+			// Carregando texturas de vênus
+			var venusColorMap = loader.load("img/planetas/venus/colorvenus.jpg"); // ColorMap Vênus
+
+			// Carregando texturas da terra
+			var earthColorMap = loader.load("img/planetas/terra/colorearth.jpg"); // ColorMap Terra
+			var normalMap = loader.load("img/planetas/terra/normalearth.jpg"); // NormalMap Terra
+			var specMap = loader.load("img/planetas/terra/specularearth.jpg"); // SpecularMap Terra
+			var cloudColorMap = loader.load("img/planetas/terra/earthclouds.jpg"); // CloudCo Nuvens da Terra
+
+			// Carregando texturas da lua
+			var moonColorMap = loader.load("img/satelites/lua/colormoon.jpg"); // ColorMap Lua
+			var moonNormalMap = loader.load("img/satelites/lua/normalmoon.jpg"); // NormalMap Lua
+
+			// Carregando texturas de marte
+			var marsColorMap = loader.load("img/planetas/marte/colormars.jpg"); // ColorMap Marte
+
+			// Carregando texturas de júpter
+			var jupiterColorMap = loader.load("img/planetas/jupiter/colorjupiter.jpg"); // ColorMap Júpiter
+
+			// Carregando texturas de saturno
+			var saturnColorMap = loader.load("img/planetas/saturno/colorsaturn.jpg"); // ColorMap Saturno
+
+			// Carregando texturas dos asteroides de saturno
+			var asteroidColorMap = loader.load("img/misc/asteroid.jpg"); // ColorMap Asteroide
+
+			// Carregando texturas do anel de saturno
+			var saturnringColorMap = loader.load("img/planetas/saturno/colorsaturnring.png"); // ColorMap Anel de Aaturno
+
+			// Carregando texturas de urano
+			var uranusColorMap = loader.load("img/planetas/urano/coloruranus.jpg"); // ColorMap Urano
+
+			// Carregando texturas de netuno
+			var neptuneColorMap = loader.load("img/planetas/netuno/colorneptune.jpg"); // ColorMap Netuno
+
+			// Carregando texturas de plutão
+			var plutoColorMap = loader.load("img/planetas anões/plutao/colorpluto.jpg"); // ColorMap Plutão
+
+			// Carregando texturas de caronte
+			var charonColorMap = loader.load("img/satelites/caronte/colorcharon.jpg"); // ColorMap Caronte
+
+			///////////////
+			// Materiais //
+			///////////////
+
+			// Material do background (milkyway)
+			const bgMaterial = new THREE.MeshBasicMaterial({
+				map: milkywaybg,
+				side: THREE.DoubleSide,
+			})
+
+			// Material do sol
+			var sunMaterial = new THREE.MeshBasicMaterial({
+				map: sunColorMap,
+				color: 0xffff00,
+			});
+
+			// Glow do sol
+			var glowMaterial = new THREE.SpriteMaterial({
+				map: glowTexture,
+				color: 0xffff00, // Cor da aura, ajuste conforme necessário
+				blending: THREE.AdditiveBlending, // Modo de blending "additive" para adicionar brilho
+				transparent: true,
+				opacity: 1.0 // Opacidade da aura, ajuste conforme necessário
+			});
+
+			// Material de mercúrio
+			var mercuryMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: mercuryColorMap,
+			});
+
+			// Material de vênus
+			var venusMaterial = new THREE.MeshPhongMaterial({
+				map: venusColorMap,
+				color: 0xffffff,
+			});
+
+			// Material da terra
+			var earthMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: earthColorMap,
+				normalMap: normalMap,
+				specularMap: specMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			// Material da terra com nuvens
+			var earthCloudMaterial = new THREE.MeshPhongMaterial({
+				map: cloudColorMap,
+				transparent: true,
+				opacity: 0.5
+			});
+
+			// Material da lua
+			var moonMaterial = new THREE.MeshPhongMaterial({
+				map: moonColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de marte
+			var marsMaterial = new THREE.MeshPhongMaterial({
+				map: marsColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de júpiter
+			var jupiterMaterial = new THREE.MeshPhongMaterial({
+				map: jupiterColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de saturno
+			var saturnMaterial = new THREE.MeshPhongMaterial({
+				map: saturnColorMap,
+				color: 0xffffff,
+			});
+
+			// Material dos asteroides
+			var asteroidMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: asteroidColorMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			// Material de urano
+			var uranusMaterial = new THREE.MeshPhongMaterial({
+				map: uranusColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de netuno
+			var neptuneMaterial = new THREE.MeshPhongMaterial({
+				map: neptuneColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de plutão e caronte
+			var plutoMaterial = new THREE.MeshPhongMaterial({
+				map: plutoColorMap,
+				color: 0xffffff,
+			});
+
+			var charonMaterial = new THREE.MeshPhongMaterial({
+				map: charonColorMap,
+				color: 0xffffff,
+			});
+
+			///////////////////////////
+			// Adicionando Elementos //
+			///////////////////////////
+
+			// Cria um campo estelar - cor / tamanho das estrelas / quantidade de estrelas / tamanho do campo estelar
+			var starField = createStarField(0xFFFFFF, 1, 1000, 28701243);
+			scene.add(starField); // Adiciona cena
+
+			// Cria o cinturão de asteroides de saturno - número de asteroides / raio / tamanho min/max dos asteroides / larguda da banda / altura da banda
+			/* var asteroidBeltSaturn = createAsteroidBelt(1, 4, 0.01, 0.018, 3, 0.1);
+			asteroidBeltSaturn.position.y = 0; // Posição do cinturão
+			asteroidBeltSaturn.rotateX(Math.PI / 2); // Rotacionando cinturão
+			asteroidBeltSaturn.scale.set(0.05, 0.05, 0.05); // Diminuindo a escala
+			scene.add(asteroidBeltSaturn); // Adiciona cena */
+
+			// Esfera do background (milkyway)
+			const bgGeometry = new THREE.SphereGeometry(28701243, 100, 100);
+			const bg = new THREE.Mesh(bgGeometry, bgMaterial);
+			scene.add(bg);
+
+			// Esfera do sol
+			const sunGeometry = new THREE.SphereGeometry( 0.5, 64, 32 ); // Na escala do nosso projeto, o diametro do sol (1.391.000 km) equivale a 1, portanto raio = 0.5
+			const sunSphere = new THREE.Mesh( sunGeometry, sunMaterial); 
+			scene.add(sunSphere); // Adiciona cena
+
+			// GlowSprite do sol
+			var glowSprite = new THREE.Sprite(glowMaterial);
+			glowSprite.scale.set(5, 5, 1); // Defina o tamanho da aura (5x5) conforme necessário
+			glowSprite.position.copy(sunSphere.position); // Definie posição
+			scene.add(glowSprite); // Adiciona cena
+
+			// Esfera de Mercúrio
+			const mercuryGeometry = new THREE.SphereGeometry(0.00175413371, 64, 32); // Raio de Mercúrio (0.00175413371) em escala 
+			const mercurySphere = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+			mercurySphere.position.set(0, 0, 41.6313637671); // Distância de Mercúrio ao Sol
+			scene.add(mercurySphere); // Adiciona cena
+
+			// Esfera de Vênus
+			const venusGeometry = new THREE.SphereGeometry(0.00435082674, 64, 32); // Raio de Vênus (0.00435082674) em escala 
+			const venusSphere = new THREE.Mesh(venusGeometry, venusMaterial);
+			venusSphere.position.set(0, 0, 77.7921854781); // Distância de Vênus ao Sol
+			scene.add(venusSphere); // Adiciona cena
+
+			// Esfera da terra
+			const earthGeometry = new THREE.SphereGeometry(0.00458015815, 64, 32); // Raio da terra (0.00458015815) em escala 
+			const earthSphere = new THREE.Mesh( earthGeometry, earthMaterial);
+			earthSphere.position.set(0, 0, 107.546994968); // Distância da Terra ao Sol
+			scene.add(earthSphere); // Adiciona cena
+
+			// Esfera da terra com nuvens
+			const earthCloudGeometry = new THREE.SphereGeometry(0.00458015815, 64, 32);
+			const earthCloudSphere = new THREE.Mesh( earthCloudGeometry, earthCloudMaterial);
+			earthCloudSphere.position.set(0, 0, 107.546994968); // Distância da Terra ao Sol
+			scene.add(earthCloudSphere); // Adiciona cena
+
+			// Esfera da lua
+			const moonGeometry = new THREE.SphereGeometry(0.00124874191, 64, 32); // Raio da lua (0.00124874191) em escala 
+			const moonSphere = new THREE.Mesh( moonGeometry, moonMaterial);
+			moonSphere.position.set(0.27634795111, 0, 107.546994968); // Distância da lua ao Sol
+			scene.add(moonSphere); // Adiciona cena
+
+			// Esfera de marte
+			const marsGeometry = new THREE.SphereGeometry(0.00243673616, 64, 32); // Raio de marte (0.00243673616) em escala 
+			const marsSphere = new THREE.Mesh( marsGeometry, marsMaterial);
+			marsSphere.position.set(0, 0, 163.870470165); // Distância de marte ao Sol
+			scene.add(marsSphere); // Adiciona cena
+			
+			///////////////////////////////////
+			// Marcadores e Linhas de Órbita //
+			///////////////////////////////////
+
+			// Parâmetros da função createMarker(cor, tamanho do marcador, posição)
+
+			// Criar marcador para o sol
+			var sunMarker = createMarker(0xffff00, 10);
+			scene.add(sunMarker); // Adiciona cena
+			sunMarker.visible = false;
+
+			// Criar marcador e linha de óbrita para a mercúrio
+			var mercuryMarker = createMarker(0xfc0fc0, 10);
+			scene.add(mercuryMarker); // Adiciona cena
+			const mercuryOrbit = createOrbit(37.25, 43.25, 0.2056, 7.005, x, y, z, 0xfc0fc0);
+			scene.add(mercuryOrbit); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para a vênus
+			var venusMarker = createMarker(0xfffa500, 10);
+			scene.add(venusMarker); // Adiciona cena
+			const venusOrbit = createOrbit(77.7921854781, 77.7921854781, 360, 0xfffa500); // Linha Vênus
+			scene.add(venusOrbit); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para a terra
+			var earthMarker = createMarker(0x00ffff, 10); // Marcador Terra
+			scene.add(earthMarker); // Adiciona cena
+			const earthOrbit = createOrbit(107.546994968, 107.546994968, 360, 0x00ffff); // Linha Terra
+			scene.add(earthOrbit); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para a lua
+			var moonMarker = createMarker(0x808080, 7.5); // Marcador Lua
+			scene.add(moonMarker); // Adiciona cena
+			//const moonOrbit = createOrbit(107.546, 107.546, 360, 0x00ffff); // Linha Lua
+			//scene.add(moonOrbit); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para marte
+			var marsMarker = createMarker(0xff0000, 10); // Marcador Marte
+			scene.add(marsMarker); // Adiciona cena
+			const marsOrbit = createOrbit(163.870470165, 163.870470165, 360, 0xff0000); // Linha Marte
+			scene.add(marsOrbit); // Adiciona cena
+
+			// Adicionando identificadores exclusivos aos marcadores
+			sunMarker.userData.name = 'Sol';
+			mercuryMarker.userData.name = 'Mercúrio';
+			venusMarker.userData.name = 'Vênus';
+			earthMarker.userData.name = 'Terra'; earthMarker.userData.closeObject = true;
+			moonMarker.userData.name = 'Lua'; moonMarker.userData.closeObject = true;
+			marsMarker.userData.name = 'Marte';
+
+			// Criando um objeto para mapear marcadores às esferas correspondentes
+			const celestialObjectMap  = {
+				'Sol': sunSphere,
+				'Mercúrio': mercurySphere,
+				'Vênus': venusSphere,
+				'Terra': earthSphere,
+				'Lua': moonSphere,
+				'Marte': marsSphere
+				// Adicione outros planetas conforme necessário...
+			};
+
+			//////////////
+			// Animação //
+			//////////////
+
+			var animate = function () {
+				// Tempo em milissegundos desde o início da animação
+				const elapsedTime = Date.now();
+
+				// Realocando linhas de órbita
+				earthOrbit.position.copy(sunSphere.position); // Terra
+
+				// Realocando Objetos Necessários (Marcadores, nuvens e etc)
+				//sunMarker.position.copy(sunSphere.position); // Sol
+				mercuryMarker.position.copy(mercurySphere.position); // Mercúrio
+				venusMarker.position.copy(venusSphere.position); // Vênus
+				earthMarker.position.copy(earthSphere.position); // Terra
+				earthCloudSphere.position.copy(earthSphere.position); // Nuvens da Terra
+				moonMarker.position.copy(moonSphere.position); // Lua
+				marsMarker.position.copy(marsSphere.position); // Marte
+
+				// Animações de câmera e renderização
+				requestAnimationFrame( animate );
+
+				const target = controls1.target;
+				controls1.update();
+
+				controls2.target.set(target.x, target.y, target.z)
+				controls2.update();
+
+				TWEEN.update(); // Atualiza as animações do Tween.js
+
+				renderer.render( scene, camera );
+			};
+			animate();
+
+			////////////////////////
+			// Funções Auxiliares //
+			////////////////////////
+
+			// Chamando função dos botões Axes/Grid Helper
+			sceneAdd('toggleAxesHelper', axesHelper, 'AxesHelper');
+			sceneAdd('toggleGridHelper', gridHelper, 'GridHelper');
+
+			// Variáveis globais
+			var lastClickedPlanet = null;
+			let raycasterThreshold = 1; // Valor padrão
+
+			// Adicione o evento de clique à janela
+			window.addEventListener('mousedown', onDocumentMouseDown, false);
+
+			//////////////////////////
+			// Manipulação de Cenas //
+			//////////////////////////
+
+			// Chamando função para criar uma cena com objetos 
+			/* const scene1Group = createSceneGroup(
+				starField,
+				asteroidBeltSaturn,
+				sunSphere,
+				glowSprite,
+				mercurySphere,
+				venusSphere,
+				earthSphere,
+				moonSphere,
+				sunMarker,
+				mercuryMarker,
+				venusMarkerq,
+				earthMarker,
+				moonMarker
+			);
+
+			scene.add(scene1Group);
+			scene1Group.visible = true; */
+		</script>
+	</body>
+</html>

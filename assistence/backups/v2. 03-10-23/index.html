@@ -1,0 +1,336 @@
+<html>
+	<head>
+		<title>Sistema Solar</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<div class="button-container">
+			<button class="button" id="toggleAxesHelper">Ligar AxesHelper</button>
+			<button class="button" id="toggleGridHelper">Ligar GridHelper</button>
+		</div>
+		<script src="js/three.js/three.js"></script> <!-- three.js -->
+		<script src="js/controls/OrbitControls.js"></script> <!-- OrbitControls -->
+		<script src="js/controls/TrackballControls.js"></script> <!-- TrackballControls -->
+		<script src="js/raycaster/Raycaster.js"></script> <!-- Raycaster -->
+		<script src="js/tween/tween.umd.js"></script> <!-- Tween -->
+		<script src="js/functions.js"></script> <!-- utilitarios -->
+		<script>
+			// Sistema Solar realista e interativo
+			// Autor: Felipe Pinto da Silva
+
+			////////////
+			// Câmera //
+			////////////
+			
+			// Cria uma câmera com uma perspectiva de visualização
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.001, 1000000000);
+
+			// Posição inicial da câmera
+			camera.position.x = 100;
+			camera.position.y = 100;
+			camera.position.z = 100;
+
+			////////////////////////////
+			// Configurações Iniciais //
+			////////////////////////////
+
+			// Cria uma cena 3D onde os elementos serão renderizados
+			var scene = new THREE.Scene();
+
+			// Cria um renderizador WebGL
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight ); // Define seu tamanho para preencher a janela
+			document.body.appendChild( renderer.domElement ); // Adiciona o elemento de renderização ao corpo do documento HTML
+
+			// Cria controles de órbita para interagir com a cena usando o mouse
+			var controls1 = new THREE.OrbitControls( camera, renderer.domElement );
+			controls1.enableZoom = false; // Desliga os controles de zoom do OrbitControls
+
+			// Ativando Damping para suavizar a câmera
+			controls1.enableDamping = true; // Liga o "amortecimento" da câmera
+			controls1.dampingFactor = 0.10; // Define o fator de "amortecimento"
+		
+			// Criando instância do TrackballControls e ativando apenas o zoom
+			var controls2 = new TrackballControls( camera, renderer.domElement );
+			controls2.noRotate = true; // Desliga a rotação da câmera
+			controls2.noPan = true; // Desliga o movimento de panorâmica
+			controls2.noZoom = false; // Liga o zoom
+			controls2.zoomSpeed = 1.5; // Define a velocidade do zoom
+
+			// Cria um guia de grid na altura da origem
+			const gridHelper = new THREE.GridHelper(20,20);
+			//scene.add(gridHelper); // Adiciona a cena
+
+			// Cria um guia para os eixos cartesianos
+			const axesHelper = new THREE.AxesHelper(1000000);
+			//scene.add(axesHelper); // Adiciona a cena
+
+			////////////////
+			// Iluminação //
+			////////////////
+
+			// Luz ambiente
+			const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+			scene.add(ambientLight); // Adiciona cena
+			
+			// Luz Direcional
+			const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+			directionalLight.position.set(-10, 0, 10);
+			directionalLight.target.position.set(0, 0, 0);
+			scene.add(directionalLight); // Adiciona cena
+
+			/////////////////////////
+			// Carregando Texturas //
+			/////////////////////////
+
+			// Cria um objeto TextureLoader para carregar texturas
+			var loader = new THREE.TextureLoader();
+
+			// Carregando texturas da terra
+			var earthColorMap = loader.load("img/planetas/terra/colorearth.jpg"); // ColorMap Terra
+			var normalMap = loader.load("img/planetas/terra/normalearth.jpg"); // NormalMap Terra
+			var specMap = loader.load("img/planetas/terra/specularearth.jpg"); // SpecularMap Terra
+
+			// Carregando texturas do asteroide
+			var asteroidColorMap = loader.load("img/misc/asteroid.jpg"); // ColorMap Asteroide
+
+			// Carregando texturas do sol
+			
+			///////////////
+			// Materiais //
+			///////////////
+
+			// Material do sol
+			var sunMaterial = new THREE.MeshBasicMaterial({
+				color: 0xffff00,
+				emissive: 0xffff00, // Emissão amarela
+				emissiveIntensity: 1, // Intensidade da emissão
+				wireframe: false, // Desativar wireframe
+				transparent: false // Desativar transparência
+			});
+
+			// Material de mercúrio
+			var mercuryMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material de vênus
+			var venusMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material da terra
+			var earthMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: earthColorMap,
+				normalMap: normalMap,
+				specularMap: specMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			// Material de marte
+			var marsMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material de júpiter
+			var jupiterMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material de saturno
+			var saturnMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material de urano
+			var uranusMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material de netuno
+			var neptuneMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material da lua
+			var moonMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material de plutão e caronte
+			var plutoMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			var charonMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+			});
+
+			// Material dos asteroides
+			var asteroidMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: asteroidColorMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			///////////////////////////
+			// Adicionando Elementos //
+			///////////////////////////
+
+			// Cria um campo estelar - cor / tamanho das estrelas / quantidade de estrelas / tamanho do campo estelar
+			var starField = createStarField(0xFFFFFF, 1, 9096, 1000000);
+			scene.add(starField); // Adiciona cena
+
+			// Cria o cinturão de asteroides de saturno - número de asteroides / raio / tamanho min/max dos asteroides / larguda da banda / altura da banda
+			var asteroidBeltSaturn = createAsteroidBelt(1, 4, 0.01, 0.018, 3, 0.1);
+			asteroidBeltSaturn.position.y = 0; // Posição do cinturão
+			asteroidBeltSaturn.rotateX(Math.PI / 2); // Rotacionando cinturão
+			asteroidBeltSaturn.scale.set(0.05, 0.05, 0.05); // Diminuindo a escala
+			scene.add(asteroidBeltSaturn); // Adiciona cena
+
+			// Esfera do sol
+			const sunGeometry = new THREE.SphereGeometry( 1, 64, 32 ); // Na escala do nosso projeto, o diametro do sol (1.391.000 km) equivale a 1
+			const sunSphere = new THREE.Mesh( sunGeometry, sunMaterial); 
+			scene.add(sunSphere); // Adiciona cena
+
+			// Esfera de Mercúrio
+			const mercuryGeometry = new THREE.SphereGeometry(0.003514, 64, 32); // Diâmetro de Mercúrio (0.003514) em escala 
+			const mercurySphere = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+			mercurySphere.position.set(0, 0, 41.631); // Distância de Mercúrio ao Sol
+			scene.add(mercurySphere); // Adiciona cena
+
+			// Esfera de Vênus
+			const venusGeometry = new THREE.SphereGeometry(0.008697, 64, 32); // Diâmetro de Vênus (0.008697) em escala 
+			const venusSphere = new THREE.Mesh(venusGeometry, venusMaterial);
+			venusSphere.position.set(0, 0, 77.792); // Distância de Vênus ao Sol
+			scene.add(venusSphere); // Adiciona cena
+
+			// Esfera da terra
+			const earthGeometry = new THREE.SphereGeometry( 0.009164, 64, 32 ); // Diâmetro da terra (0.09164) em escala 
+			const earthSphere = new THREE.Mesh( earthGeometry, earthMaterial);
+			earthSphere.position.set(0, 0, 107.546); // Distância da Terra ao Sol
+			scene.add(earthSphere); // Adiciona cena
+			
+			///////////////////////////////////
+			// Marcadores e Linhas de Órbita //
+			///////////////////////////////////
+
+			// Parâmetros da função createMarker(cor, tamanho do marcador, posição)
+
+			// Criar marcador para o sol
+			var sunMarker = createMarker(0xffff00, 10);
+			scene.add(sunMarker); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para a mercúrio
+			var mercuryMarker = createMarker(0xfc0fc0, 10);
+			scene.add(mercuryMarker); // Adiciona cena
+			const mercuryOrbit = createOrbit(41.631, 41.631, 360, 0xfc0fc0); // Linha Mercúrio
+			scene.add(mercuryOrbit); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para a vênus
+			var venusMarker = createMarker(0xfffa500, 10);
+			scene.add(venusMarker); // Adiciona cena
+			const venusOrbit = createOrbit(77.792, 77.792, 360, 0xfffa500); // Linha Vênus
+			scene.add(venusOrbit); // Adiciona cena
+
+			// Criar marcador e linha de óbrita para a terra
+			var earthMarker = createMarker(0x00ffff, 10); // Marcador Terra
+			scene.add(earthMarker); // Adiciona cena
+			const earthOrbit = createOrbit(107.546, 107.546, 360, 0x00ffff); // Linha Terra
+			scene.add(earthOrbit); // Adiciona cena
+
+			//////////////
+			// Animação //
+			//////////////
+
+
+			var animate = function () {
+				// Tempo em milissegundos desde o início da animação
+				const elapsedTime = Date.now();
+
+				// Realocando linhas de órbita
+				earthOrbit.position.copy(sunSphere.position); // Terra
+
+				// Realocando Marcadores
+				sunMarker.position.copy(sunSphere.position); // Mercúrio
+				mercuryMarker.position.copy(mercurySphere.position); // Mercúrio
+				venusMarker.position.copy(venusSphere.position); // Vênus
+				earthMarker.position.copy(earthSphere.position); // Terra
+
+				// Animações de câmera e renderização
+				requestAnimationFrame( animate );
+				
+
+				const target = controls1.target;
+				controls1.update();
+
+				controls2.target.set(target.x, target.y, target.z)
+				controls2.update();
+				
+				renderer.render( scene, camera );
+			};
+			animate();
+
+			////////////////////////
+			// Funções Auxiliares //
+			////////////////////////
+
+			// Chamando função dos botões Axes/Grid Helper
+			sceneAdd('toggleAxesHelper', axesHelper, 'AxesHelper');
+			sceneAdd('toggleGridHelper', gridHelper, 'GridHelper');
+
+			// Crie um array contendo apenas os marcadores dos planetas
+			const planetMarkers = [sunMarker, mercuryMarker, venusMarker, earthMarker]; // Adicione outros marcadores aqui, se necessário
+
+			// Adicione os marcadores dos planetas à cena
+			scene.add(...planetMarkers);
+
+			// Configure o manipulador de cliques para os marcadores dos planetas
+			setupObjectClickHandler(renderer, camera, planetMarkers, function (clickedMarker) {
+				// Aqui, você pode verificar qual planeta foi clicado e fazer algo com base nisso
+				if (clickedMarker === sunMarker) {
+					// Clicou no marcador do Sol
+					focusOnObject(sunSphere);
+				} else if (clickedMarker === mercuryMarker) {
+					// Clicou no marcador de Mercúrio
+					focusOnObject(mercurySphere);
+				} else if (clickedMarker === venusMarker) {
+					// Clicou no marcador de Vênus
+					focusOnObject(venusSphere);
+				} else if (clickedMarker === earthMarker) {
+					// Clicou no marcador da Terra
+					focusOnObject(earthSphere);
+				}
+				// Adicione outras verificações para planetas adicionais, se necessário
+			});
+
+			//////////////////////////
+			// Manipulação de Cenas //
+			//////////////////////////
+
+			// Chamando função para criar uma cena com objetos 
+			//const scene1Group = createSceneGroup(
+			//	starField,
+			//	asteroidBeltSaturn,
+			//	sunSphere,
+			//	mercurySphere,
+			//	venusSphere,
+			//	earthSphere,
+			//	markerSun,
+			//	markerMercury,
+			//	markerVenus,
+			//	markerEarth
+			//);
+
+			//scene.add(scene1Group);
+			//scene1Group.visible = true;
+		</script>
+	</body>
+</html>

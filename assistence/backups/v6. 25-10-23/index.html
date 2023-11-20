@@ -1,0 +1,1123 @@
+<!--Sistema Solar realista e interativo
+    Autores: Felipe Pinto da Silva
+		     Camila Ferreira
+             Hugo Pedro Nascimento
+ -->
+
+<html>
+	<head>
+		<title>Sistema Solar</title>
+		<link rel="icon" href="icon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style></style>
+	</head>
+	<body>
+		<!-- Título -->
+		<button id="sistema-solar-title">SISTEMA SOLAR</button>
+
+		<!-- Card do Sistema Solar -->
+		<div id="sistema-card" class="card" style="display: block;">
+			<h1 id="object-name">Sistema Solar</h1>
+			<h4 id="object-type">NOSSO QUINTAL CÓSMICO</h4>
+			<p id="object-info">Nos confins do universo, o Sistema Solar brilha como um oásis de vida e exploração. Ele é um conjunto de corpos celestes que orbitam
+				em torno de nossa estrela, o Sol, e, até onde sabemos, é o único sistema estelar conhecido por abrigar vida. Este sistema singular nos proporciona uma
+				visão fascinante das complexas interações do cosmos.<br><br>
+
+				O Sistema Solar é formado pelo Sol, uma estrela de classe G que reina soberana no centro, e por uma série de planetas, asteroides, cometas e luas que
+				orbitam ao seu redor. Nossa Terra, a quinta maior entre esses planetas, é única. Com suas condições propícias à vida, incluindo a presença de água líquida,
+				é um ponto de grande interesse e pesquisa. É o único planeta conhecido por abrigar uma diversidade incrível de formas de vida, tornando-o um local verdadeiramente
+				especial no vasto universo.<br><br>
+				
+				Comparado a outros sistemas estelares, o Sistema Solar exibe características notáveis. Além de sua estrela central, o Sol, todos os planetas no Sistema Solar,
+				exceto Mercúrio, têm uma ou mais luas que orbitam ao redor deles, cada uma com sua própria história e características únicas. Este arranjo de planetas e luas fornece
+				um laboratório cósmico para estudar uma ampla gama de fenômenos celestes, desde impactos de asteroides até vulcões ativos e oceanos subterrâneos.<br><br>
+				
+				O Sistema Solar é conhecido como "Nosso Quintal Cósmico", um termo afetuoso que reflete nossa conexão com essa região do espaço. Enquanto observamos e exploramos
+				outros sistemas estelares distantes, nossa própria vizinhança espacial continua a nos surpreender com sua riqueza e complexidade. Através da exploração espacial e
+				pesquisa contínua, estamos desvendando os segredos do Sistema Solar e sua singularidade no vasto universo.</p>
+		</div>
+
+		<!-- Card do Sol -->
+		<div id="sun-card" class="card" style="display: none;">
+			<h1 id="object-name">Sol</h1>
+			<h4 id="object-type">ESTRELA ANÃ AMARELA</h4>
+			<p id="object-info">O Sol, o coração do nosso sistema solar, é uma estrela anã amarela, uma bola quente de gases incandescentes.<br>
+				Sua gravidade mantém o sistema solar unido, mantendo tudo, desde os maiores planetas até as menores partículas de detritos, em sua órbita.
+				Correntes elétricas no Sol geram um campo magnético que é transportado pelo sistema solar pelo vento solar - um fluxo de gás eletricamente
+				carregado que sopra para fora do Sol em todas as direções.<br><br>
+
+				As conexões e interações entre o Sol e a Terra impulsionam as estações do ano, as correntes oceânicas, o clima, o clima, os cinturões de
+				radiação e as auroras. Embora seja especial para nós, existem bilhões de estrelas como o nosso Sol espalhadas pela Via Láctea. O Sol e tudo
+				o que orbita ao seu redor estão localizados na Via Láctea. Mais especificamente, nosso Sol está em um braço espiral chamado Braço de Orion
+				que se estende para fora do Braço de Sagitário. A partir daí, o Sol orbita o centro da Via Láctea, trazendo os planetas, asteroides, cometas
+				e outros objetos junto com ele. Nosso sistema solar está se movendo a uma velocidade média de 450.000 milhas por hora (720.000 quilômetros por hora).
+				Mas mesmo a essa velocidade, leva cerca de 230 milhões de anos para completar uma órbita completa ao redor da Via Láctea.<br><br>
+				
+				O Sol gira enquanto orbita o centro da Via Láctea. Sua rotação tem uma inclinação axial de 7,25 graus em relação ao plano das órbitas dos planetas.
+				Como o Sol não é um corpo sólido, diferentes partes do Sol giram a taxas diferentes. No equador, o Sol gira uma vez a cada cerca de 25 dias, mas em
+				seus polos, o Sol gira uma vez em seu eixo a cada 36 dias terrestres.</p>
+		</div>
+
+		<!-- Card de Mercúrio -->
+		<div id="mercury-card" class="card" style="display: none;">
+			<h1 id="object-name">Mercúrio</h1>
+			<h4 id="object-type">TERRESTRE</h4>
+			<p id="object-info">O menor planeta em nosso sistema solar e o mais próximo do Sol, Mercúrio é apenas ligeiramente maior do que a Lua da Terra.<br>
+				As temperaturas da superfície de Mercúrio são extremamente quentes e frias. Como o planeta está tão perto do Sol, as temperaturas diurnas podem
+				atingir picos de 800°F (430°C). Sem atmosfera para reter esse calor durante a noite, as temperaturas podem cair para tão baixo quanto -290°F (-180°C).
+				Da superfície de Mercúrio, o Sol pareceria mais de três vezes maior do que quando visto da Terra, e a luz solar seria até sete vezes mais brilhante.
+				Apesar de sua proximidade com o Sol, Mercúrio não é o planeta mais quente em nosso sistema solar - esse título pertence a Vênus, graças à sua densa atmosfera.
+				No entanto, Mercúrio é o planeta mais rápido, orbitando o Sol a cada 88 dias terrestres. A superfície de Mercúrio se assemelha à da Lua da Terra, marcada por muitas
+				crateras de impacto resultantes de colisões com meteoroides e cometas. A primeira espaçonave a visitar Mercúrio foi a Mariner 10, que mapeou cerca de 45% da superfície.
+				A missão MESSENGER (MErcury Surface, Space ENvironment, GEochemistry, and Ranging) da NASA passou por Mercúrio três vezes em 2008-2009 e orbitou o planeta de 2011 a 2015,
+				mapeando toda a superfície.</p>
+		</div>
+
+		<!-- Card de Vênus -->
+		<div id="venus-card" class="card" style="display: none;">
+			<h1 id="object-name">Vênus</h1>
+			<h4 id="object-type">TERRESTRE</h4>
+			<p id="object-info">Similar em tamanho e estrutura à Terra, Vênus tem sido chamada de gêmea da Terra. No entanto, essas não são gêmeas idênticas - existem diferenças radicais
+				entre os dois mundos.<br> Vênus e a Terra são semelhantes em tamanho, massa, densidade, composição e gravidade. No entanto, aí terminam as semelhanças. Vênus tem uma 
+				atmosfera espessa e tóxica cheia de dióxido de carbono e está constantemente envolta em densas nuvens amareladas de ácido sulfúrico, que retêm calor, causando um efeito
+				estufa descontrolado. É o planeta mais quente do nosso sistema solar, mesmo que Mercúrio esteja mais próximo do Sol. Vênus tem uma pressão atmosférica esmagadora em sua
+				superfície - mais de 90 vezes a da Terra - semelhante à pressão que você encontraria a uma milha abaixo do oceano na Terra. Vênus foi o primeiro planeta a ser explorado
+				por uma espaçonave - a Mariner 2 da NASA sobrevoou com sucesso e escaneou o mundo coberto de nuvens em 14 de dezembro de 1962. Desde então, numerosas espaçonaves dos EUA 
+				e de outras agências espaciais exploraram Vênus, incluindo a Magellan da NASA, que mapeou a superfície do planeta com radar. Até o momento, a antiga União Soviética é a 
+				única nação a pousar na superfície de Vênus, embora a espaçonave não tenha sobrevivido por muito tempo no ambiente hostil.</p>
+		</div>
+
+		<!-- Card da Terra -->
+		<div id="earth-card" class="card" style="display: none;">
+			<h1 id="object-name">Terra</h1>
+			<h4 id="object-type">TERRESTRE</h4>
+			<p id="object-info">A Terra, nosso planeta de origem, é o único lugar que conhecemos até agora habitado por seres vivos. Também é o único planeta em nosso sistema solar com
+				água líquida na superfície.<br> A Terra é apenas o quinto maior planeta do sistema solar, um pouco maior que Vênus, que está próxima. A Terra é o maior dos quatro planetas
+				mais próximos do Sol, todos feitos de rocha e metal. A NASA tem a maioria das missões em operação em nosso planeta de origem. O Sistema de Observação da Terra (EOS) da NASA
+				é uma série coordenada de satélites em órbita polar e baixa inclinação para observações globais de longo prazo da superfície terrestre, biosfera, Terra sólida, atmosfera e
+				oceanos.</p>
+		</div>
+
+		<!-- Card da Lua -->
+		<div id="moon-card" class="card" style="display: none;">
+			<h1 id="object-name">Lua</h1>
+			<h4 id="object-type">LUA DA TERRA</h4>
+			<p id="object-info">A Lua da Terra é o único lugar além da Terra onde os humanos já puseram os pés.<br>
+				Como o objeto mais brilhante e maior em nosso céu noturno, a Lua torna a Terra um planeta mais habitável, moderando o balanço do eixo da nossa casa, resultando em um clima
+				relativamente estável. Além disso, ela causa as marés, criando um ritmoque tem orientado os seres humanos por milhares de anos.<br><br>
+
+				Nossa lua é a quinta maior das mais de 190 luas que orbitam planetas em nosso sistema solar.<br><br>
+
+				O único satélite natural da Terra é simplesmente chamado "a Lua" porque as pessoas não sabiam da existência de outras luas até Galileu Galilei descobrir quatro luas orbitando
+				Júpiter em 1610. Com um raio de 1.737,5 quilômetros (1.079,6 milhas), a Lua tem menos de um terço da largura da Terra. Se a Terra fosse do tamanho de uma moeda de dez centavos,
+				a Lua seria aproximadamente do tamanho de um grão de café.<br><br>
+				
+				A Lua está mais distante da Terra do que a maioria das pessoas imagina. A Lua está a uma média de 384.400 quilômetros (238.855 milhas) de distância. Isso significa que 30
+				planetas do tamanho da Terra poderiam caber entre a Terra e a Lua.<br><br>
+				
+				A Lua está se afastando lentamente da Terra, cerca de uma polegada a cada ano. A teoria predominante sobre a origem da Lua é que um corpo do tamanho de Marte colidiu com a
+				Terra há cerca de 4,5 bilhões de anos. Os detritos resultantes da colisão entre a Terra e o impactor se acumularam para formar nosso satélite natural. A Lua recém-formada
+				estava em estado líquido, mas dentro de cerca de 100 milhões de anos, a maior parte do "oceano de magma" global havia se cristalizado, com rochas menos densas flutuando
+				para cima e, eventualmente, formando a crosta lunar.</p>
+		</div>
+
+		<!-- Card de Marte -->
+		<div id="mars-card" class="card" style="display: none;">
+			<h1 id="object-name">Marte</h1>
+			<h4 id="object-type">TERRESTRE</h4>
+			<p id="object-info">O quarto planeta a partir do Sol, Marte é um mundo empoeirado, frio e desértico com uma atmosfera muito fina.<br>
+				Marte recebeu o nome dos antigos romanos em homenagem ao seu deus da guerra, devido à sua cor avermelhada que lembrava o sangue. O Planeta Vermelho, na verdade,
+				apresenta diversas cores em sua superfície, como marrom, dourado e bege. A razão pela qual Marte parece avermelhado deve-se à oxidação, ou seja, à ferrugem do ferro nas
+				rochas, no regolito (a "terra" marciana) e na poeira de Marte. Essa poeira é levantada para a atmosfera e, à distância, faz o planeta parecer predominantemente vermelho.
+				Marte é o lar do maior vulcão do sistema solar, o Olympus Mons. Ele é três vezes mais alto que o Monte Everest na Terra e tem uma base do tamanho do estado do Novo México.
+				Marte parece ter tido um passado com água, com antigos sistemas de vales de rios, deltas e leitos de lagos, bem como rochas e minerais na superfície que só poderiam ter se
+				formado em água líquida. Alguns recursos sugerem que Marte experimentou grandes inundações há cerca de 3,5 bilhões de anos. Hoje, a água em Marte é encontrada na forma de
+				gelo de água logo abaixo da superfície nas regiões polares, assim como em água salgada, que flui sazonalmente por algumas encostas de colinas e crateras.<br>
+				Nenhum planeta além da Terra foi estudado tão intensamente quanto Marte. Hoje, uma frota de espaçonaves robóticas estuda Marte de todos os ângulos.</p>
+		</div>
+
+		<div class="slider-container">
+			<div class="date"></div>
+			<div class="value">TAXA REAL</div>
+			<div class="time"></div>
+			<input type="range" min="0" max="12" value="6" class="slider" id="timeMultiplierSlider">
+		</div>
+
+		<script src="js/three.js/three.js"></script> <!-- three.js -->
+		<script src="js/controls/OrbitControls.js"></script> <!-- OrbitControls -->
+		<script src="js/controls/TrackballControls.js"></script> <!-- TrackballControls -->
+		<script src="js/raycaster/Raycaster.js"></script> <!-- Raycaster -->
+		<script src="js/tween/tween.umd.js"></script> <!-- Tween -->
+		<script src="js/loaders/GLTFLoader.js"></script> <!-- GLTFLoader -->
+		<script src="js/functions.js"></script> <!-- utilitarios -->
+		<script>
+			////////////
+			// Câmera //
+			////////////
+			
+			// Cria uma câmera com uma perspectiva de visualização
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.00001, 1000000000);
+
+			// Posição inicial da câmera
+			camera.position.x = -4800; //100
+			camera.position.y = 2000; //100
+			camera.position.z = 4800; //200
+
+			////////////////////////////
+			// Configurações Iniciais //
+			////////////////////////////
+
+			// Cria uma cena 3D onde os elementos serão renderizados
+			var scene = new THREE.Scene();
+
+			// Cria um renderizador WebGL
+			var renderer = new THREE.WebGLRenderer({antialias: true, antialiasQuality: 0.1}); // antialising = ativa antialising / antialiasQuality = define qualidade
+			renderer.setSize( window.innerWidth, window.innerHeight ); // Define seu tamanho para preencher a janela
+			document.body.appendChild( renderer.domElement ); // Adiciona o elemento de renderização ao corpo do documento HTML	
+
+			// Cria controles de órbita para interagir com a cena usando o mouse
+			var controls1 = new THREE.OrbitControls( camera, renderer.domElement );
+			controls1.enableZoom = false; // Desliga os controles de zoom do OrbitControls
+
+			// Ativando Damping para suavizar a câmera
+			controls1.enableDamping = true; // Liga o "amortecimento" da câmera
+			controls1.dampingFactor = 0.10; // Define o fator de "amortecimento"
+		
+			// Criando instância do TrackballControls e ativando apenas o zoom
+			var controls2 = new TrackballControls( camera, renderer.domElement );
+			controls2.noRotate = true; // Desliga a rotação da câmera
+			controls2.noPan = true; // Desliga o movimento de panorâmica
+			controls2.noZoom = false; // Liga o zoom
+			controls2.zoomSpeed = 1.5; // Define a velocidade do zoom
+			controls2.maxDistance = 28680000 // Distância máxima de zoom out
+
+			// Cria um guia de grid na altura da origem
+			const gridHelper = new THREE.GridHelper(20,20);
+			//scene.add(gridHelper); // Adiciona a cena
+
+			// Cria um guia para os eixos cartesianos
+			const axesHelper = new THREE.AxesHelper(1000000);
+			//scene.add(axesHelper); // Adiciona a cena
+
+			////////////////
+			// Iluminação //
+			////////////////
+
+			// Luz ambiente
+			const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+			scene.add(ambientLight); // Adiciona cena
+			
+			/* // Luz Direcional
+			const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+			directionalLight.position.set(-10, 0, 10);
+			directionalLight.target.position.set(0, 0, 0);
+			scene.add(directionalLight); // Adiciona cena */
+			// Crie uma luz PointLight
+			const pointLight = new THREE.PointLight(0xffffff, 1, 0);
+			// Defina a posição da luz (origem)
+			pointLight.position.set(0, 0, 0);
+			scene.add(pointLight);
+
+			/////////////////////////
+			// Carregando Texturas //
+			/////////////////////////
+
+			// Cria um objeto TextureLoader para carregar texturas
+			var loader = new THREE.TextureLoader();
+
+			// Carregando textura do background
+			var milkywaybg = loader.load("img/misc/background.jpg"); // Background
+
+			// Carregando texturas do sol
+			var sunColorMap = loader.load("img/sol/colorsun.jpg"); // ColorMap Sol
+
+			// Carregando textura do glow do sol
+			var glowTexture  = loader.load("img/sol/sun_glow.png"); // Glow Sol
+
+			// Carregando texturas de mercúrio
+			var mercuryColorMap = loader.load("img/planetas/mercurio/colormercury.jpg"); // ColorMap Mercúrio
+
+			// Carregando texturas de vênus
+			var venusColorMap = loader.load("img/planetas/venus/colorvenus.jpg"); // ColorMap Vênus
+
+			// Carregando texturas da terra
+			var earthColorMap = loader.load("img/planetas/terra/colorearth.jpg"); // ColorMap Terra
+			var normalMap = loader.load("img/planetas/terra/normalearth.jpg"); // NormalMap Terra
+			var specMap = loader.load("img/planetas/terra/specularearth.jpg"); // SpecularMap Terra
+			var cloudColorMap = loader.load("img/planetas/terra/earthclouds.jpg"); // CloudCo Nuvens da Terra
+
+			// Carregando texturas da lua
+			var moonColorMap = loader.load("img/satelites/lua/colormoon.jpg"); // ColorMap Lua
+			var moonNormalMap = loader.load("img/satelites/lua/normalmoon.jpg"); // NormalMap Lua
+
+			// Carregando texturas de marte
+			var marsColorMap = loader.load("img/planetas/marte/colormars.jpg"); // ColorMap Marte
+
+			// Carregando texturas de júpter
+			var jupiterColorMap = loader.load("img/planetas/jupiter/colorjupiter.jpg"); // ColorMap Júpiter
+
+			// Carregando texturas de saturno
+			var saturnColorMap = loader.load("img/planetas/saturno/colorsaturn.jpg"); // ColorMap Saturno
+
+			// Carregando texturas dos asteroides de saturno
+			var asteroidColorMap = loader.load("img/misc/asteroid.jpg"); // ColorMap Asteroide
+
+			// Carregando texturas do anel de saturno
+			var saturnringColorMap = loader.load("img/planetas/saturno/colorsaturnring.png"); // ColorMap Anel de Aaturno
+
+			// Carregando texturas de urano
+			var uranusColorMap = loader.load("img/planetas/urano/coloruranus.jpg"); // ColorMap Urano
+
+			// Carregando texturas de netuno
+			var neptuneColorMap = loader.load("img/planetas/netuno/colorneptune.jpg"); // ColorMap Netuno
+
+			// Carregando texturas de plutão
+			var plutoColorMap = loader.load("img/planetas anões/plutao/colorpluto.jpg"); // ColorMap Plutão
+
+			// Carregando texturas de caronte
+			var charonColorMap = loader.load("img/satelites/caronte/colorcharon.jpg"); // ColorMap Caronte
+
+			///////////////
+			// Materiais //
+			///////////////
+
+			// Material do background (milkyway)
+			const bgMaterial = new THREE.MeshBasicMaterial({
+				map: milkywaybg,
+				side: THREE.DoubleSide,
+			})
+
+			// Material do sol
+			var sunMaterial = new THREE.MeshBasicMaterial({
+				//map: sunColorMap,
+				color: 0xffff00,
+			});
+
+			// Glow do sol
+			var glowMaterial = new THREE.SpriteMaterial({
+				map: glowTexture,
+				color: 0xffff00, // Cor da aura, ajuste conforme necessário
+				blending: THREE.AdditiveBlending, // Modo de blending "additive" para adicionar brilho
+				transparent: true,
+				opacity: 1.0, // Opacidade da aura, ajuste conforme necessário
+				depthWrite: false, // Teste
+				blending: THREE.AdditiveBlending // Teste
+			});
+
+			// Material de mercúrio
+			var mercuryMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: mercuryColorMap,
+			});
+
+			// Material de vênus
+			var venusMaterial = new THREE.MeshPhongMaterial({
+				map: venusColorMap,
+				color: 0xffffff,
+			});
+
+			// Material da terra
+			var earthMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: earthColorMap,
+				normalMap: normalMap,
+				specularMap: specMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			// Material da terra com nuvens
+			var earthCloudMaterial = new THREE.MeshPhongMaterial({
+				map: cloudColorMap,
+				transparent: true,
+				opacity: 0.5
+			});
+
+			// Material da lua- Satélite
+			var moonMaterial = new THREE.MeshPhongMaterial({
+				map: moonColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de marte
+			var marsMaterial = new THREE.MeshPhongMaterial({
+				map: marsColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de júpiter
+			var jupiterMaterial = new THREE.MeshPhongMaterial({
+				map: jupiterColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de saturno
+			var saturnMaterial = new THREE.MeshPhongMaterial({
+				map: saturnColorMap,
+				color: 0xffffff,
+			});
+
+			// Material dos asteroides
+			var asteroidMaterial = new THREE.MeshPhongMaterial({
+				color: 0xffffff,
+				map: asteroidColorMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			// Material de urano
+			var uranusMaterial = new THREE.MeshPhongMaterial({
+				map: uranusColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de netuno
+			var neptuneMaterial = new THREE.MeshPhongMaterial({
+				map: neptuneColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de plutão
+			var plutoMaterial = new THREE.MeshPhongMaterial({
+				map: plutoColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de caronte - Satélite
+			var charonMaterial = new THREE.MeshPhongMaterial({
+				map: charonColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de ceres
+			var ceresMaterial = new THREE.MeshPhongMaterial({
+				map: charonColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de haumea
+			var haumeaMaterial = new THREE.MeshPhongMaterial({
+				map: charonColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de makemake
+			var makemakeMaterial = new THREE.MeshPhongMaterial({
+				map: charonColorMap,
+				color: 0xffffff,
+			});
+
+			// Material de éris
+			var erisMaterial = new THREE.MeshPhongMaterial({
+				map: charonColorMap,
+				color: 0xffffff,
+			});
+
+			///////////////////////////
+			// Adicionando Elementos //
+			///////////////////////////
+
+			// Cria um campo estelar - cor / tamanho das estrelas / quantidade de estrelas / tamanho do campo estelar
+			var starField = createStarField(0xFFFFFF, 1, 1000, 28701243);
+			scene.add(starField); // Adiciona cena
+
+			// Cria o cinturão de asteroides de saturno - número de asteroides / raio / tamanho min/max dos asteroides / larguda da banda / altura da banda
+			/* var asteroidBeltSaturn = createAsteroidBelt(1, 4, 0.01, 0.018, 3, 0.1);
+			asteroidBeltSaturn.position.y = 0; // Posição do cinturão
+			asteroidBeltSaturn.rotateX(Math.PI / 2); // Rotacionando cinturão
+			asteroidBeltSaturn.scale.set(0.05, 0.05, 0.05); // Diminuindo a escala
+			scene.add(asteroidBeltSaturn); // Adiciona cena */
+
+			// Esfera do background (milkyway)
+			const bgGeometry = new THREE.SphereGeometry(28701243, 100, 100);
+			const bg = new THREE.Mesh(bgGeometry, bgMaterial);
+			scene.add(bg);
+
+			// Esfera do sol
+			const sunGeometry = new THREE.SphereGeometry(0.5, 64, 32); // Na escala do nosso projeto, o diametro do sol (1.392.700 km) equivale a 1, portanto raio = 0.5
+			const sunSphere = new THREE.Mesh( sunGeometry, sunMaterial); 
+			scene.add(sunSphere); // Adiciona cena
+
+			// GlowSprite do sol
+			var glowSprite = new THREE.Sprite(glowMaterial);
+			glowSprite.scale.set(5, 5, 1); // Defina o tamanho da aura (5x5) conforme necessário
+			glowSprite.position.copy(sunSphere.position); // Definie posição
+			scene.add(glowSprite); // Adiciona cena
+
+			// Esfera de Mercúrio
+			const mercuryGeometry = new THREE.SphereGeometry(0.0017519925324908452, 64, 32); // Raio de Mercúrio (0.0017519925324908452) em escala 
+			const mercurySphere = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+			scene.add(mercurySphere); // Adiciona cena
+			mercurySphere.rotation.x = 0.034 * (Math.PI / 180); // Eixo de rotação da Mercúrio
+
+			// Esfera de Vênus
+			const venusGeometry = new THREE.SphereGeometry(0.00434551590435844, 64, 32); // Raio de Vênus (0.00434551590435844) em escala 
+			const venusSphere = new THREE.Mesh(venusGeometry, venusMaterial);
+			scene.add(venusSphere); // Adiciona cena
+			venusSphere.rotation.x = 177.36 * (Math.PI / 180); // Eixo de rotação da Vênus
+
+			// Esfera da Terra
+			const earthGeometry = new THREE.SphereGeometry(0.004574567387089825, 64, 32); // Raio da Terra (0.004574567387089825) em escala 
+			const earthSphere = new THREE.Mesh( earthGeometry, earthMaterial);
+			scene.add(earthSphere); // Adiciona cena
+			earthSphere.rotation.x = 23.439 * (Math.PI / 180); // Eixo de rotação da Terra
+
+			// Esfera da Terra com nuvens
+			const earthCloudGeometry = new THREE.SphereGeometry(0.004574567387089825, 64, 32);
+			const earthCloudSphere = new THREE.Mesh( earthCloudGeometry, earthCloudMaterial);
+			scene.add(earthCloudSphere); // Adiciona cena
+			earthCloudSphere.rotation.x = 23.439 * (Math.PI / 180);
+
+			// Esfera da Lua
+			const moonGeometry = new THREE.SphereGeometry(0.0012472176348100811, 64, 32); // Raio da Lua (0.0012472176348100811) em escala 
+			const moonSphere = new THREE.Mesh( moonGeometry, moonMaterial);
+			scene.add(moonSphere); // Adiciona cena
+			moonSphere.rotation.x = 6.687 * (Math.PI / 180); // Eixo de rotação da Lua
+
+			// Esfera de Marte
+			const marsGeometry = new THREE.SphereGeometry(0.0024337617577367705, 64, 32); // Raio de Marte (0.0024337617577367705) em escala 
+			const marsSphere = new THREE.Mesh( marsGeometry, marsMaterial);
+			scene.add(marsSphere); // Adiciona cena
+			marsSphere.rotation.x = 25.19 * (Math.PI / 180); // Eixo de rotação de Marte
+
+			// Esfera de Júpiter
+			const jupiterGeometry = new THREE.SphereGeometry(0.050197458174768436, 64, 32); // Raio de Júpiter (0.050197458174768436) em escala 
+			const jupiterSphere = new THREE.Mesh( jupiterGeometry, jupiterMaterial);
+			scene.add(jupiterSphere); // Adiciona cena
+			jupiterSphere.rotation.x = 3.13 * (Math.PI / 180); // Eixo de rotação de Júpiter
+
+			// Esfera de Saturno
+			const saturnGeometry = new THREE.SphereGeometry(0.04181087097005816, 64, 32); // Raio de Saturno (0.04181087097005816) em escala 
+			const saturnSphere = new THREE.Mesh( saturnGeometry, saturnMaterial);
+			scene.add(saturnSphere); // Adiciona cena
+			saturnSphere.rotation.x = 26.73 * (Math.PI / 180); // Eixo de rotação de Saturno
+
+			// Esfera de Urano
+			const uranusGeometry = new THREE.SphereGeometry(0.01821066992173476, 64, 32); // Raio de Urano (0.01821066992173476) em escala 
+			const uranusSphere = new THREE.Mesh( uranusGeometry, uranusMaterial);
+			scene.add(uranusSphere); // Adiciona cena
+			uranusSphere.rotation.x = 97.77 * (Math.PI / 180); // Eixo de rotação de Urano
+
+			// Esfera de Netuno
+			const neptuneGeometry = new THREE.SphereGeometry(0.01767932792417606, 64, 32); // Raio de Netuno (0.01767932792417606) em escala 
+			const neptuneSphere = new THREE.Mesh( neptuneGeometry, neptuneMaterial);
+			scene.add(neptuneSphere); // Adiciona cena
+			neptuneSphere.rotation.x = 28.32 * (Math.PI / 180); // Eixo de rotação de Netuno
+
+			// Esfera de Plutão
+			const plutoGeometry = new THREE.SphereGeometry(0.0008533783298628563, 64, 32); // Raio de Plutão (0.0008533783298628563) em escala 
+			const plutoSphere = new THREE.Mesh( plutoGeometry, plutoMaterial);
+			scene.add(plutoSphere); // Adiciona cena
+			plutoSphere.rotation.x = 122.53 * (Math.PI / 180); // Eixo de rotação de Plutão
+
+			// Esfera de Caronte
+			const charonGeometry = new THREE.SphereGeometry(0.00043512601421698857, 64, 32); // Raio de Caronte (0.00043512601421698857) em escala 
+			const charonSphere = new THREE.Mesh( charonGeometry, charonMaterial);
+			scene.add(charonSphere); // Adiciona cena
+			charonSphere.rotation.x = 122.52 * (Math.PI / 180); // Eixo de rotação de Caronte
+
+			// Esfera de Ceres
+			const ceresGeometry = new THREE.SphereGeometry(0.0003396280606017089, 64, 32); // Raio de Ceres (0.0003396280606017089) em escala 
+			const ceresSphere = new THREE.Mesh( ceresGeometry, ceresMaterial);
+			scene.add(ceresSphere); // Adiciona cena
+			ceresSphere.rotation.x = 3 * (Math.PI / 180); // Eixo de rotação de Ceres
+
+			// Esfera de Haumea
+			const haumeaGeometry = new THREE.SphereGeometry(0.0005859122567674302, 64, 32); // Raio de Haumea (0.0005859122567674302) em escala 
+			const haumeaSphere = new THREE.Mesh( haumeaGeometry, haumeaMaterial);
+			scene.add(haumeaSphere); // Adiciona cena
+			haumeaSphere.rotation.x = 12 * (Math.PI / 180); // Eixo de rotação de Haumea
+
+			// Esfera de Makemake
+			const makemakeGeometry = new THREE.SphereGeometry(0.0005133912543979321, 64, 32); // Raio de Makemake (0.0005133912543979321) em escala 
+			const makemakeSphere = new THREE.Mesh( makemakeGeometry, makemakeMaterial);
+			scene.add(makemakeSphere); // Adiciona cena
+			makemakeSphere.rotation.x = 0 * (Math.PI / 180); // Eixo de rotação de Makemake
+
+			// Esfera de Éris
+			const erisGeometry = new THREE.SphereGeometry(0.0008350685718388741, 64, 32); // Raio de Éris (0.0008350685718388741) em escala 
+			const erisSphere = new THREE.Mesh( erisGeometry, erisMaterial);
+			scene.add(erisSphere); // Adiciona cena
+			erisSphere.rotation.x = 0 * (Math.PI / 180); // Eixo de rotação de Éris
+			
+			///////////////////////
+			// Variáveis Globais //
+			///////////////////////
+			
+			var cameraTargetObject = 'Sistema';
+			let raycasterThreshold = 10; // Valor padrão
+
+			///////////////////////////////////
+			// Marcadores e Linhas de Órbita //
+			///////////////////////////////////
+
+			// Parâmetros da função createMarker(cor, tamanho do marcador, posição)
+
+			// Criar marcador para o Sol
+			var sunMarker = createMarker(0xffff00, 10);
+			scene.add(sunMarker); // Adiciona cena
+			sunMarker.visible = false;
+
+			// Criar marcador e linha de óbrita para a Mercúrio
+			var mercuryMarker = createMarker(0xfc0fc0, 10);
+			scene.add(mercuryMarker); // Adiciona cena
+			const mercuryOrbit = createOrbit(33.029367415811016, 50.13283549938968, 0.205630, 7.005, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0xfc0fc0);
+			scene.add(mercuryOrbit); // Adiciona cena
+
+			// Criar marcador e linha de órbita para Vênus
+			var venusMarker = createMarker(0xfffa500, 10);
+			scene.add(venusMarker);
+			const venusOrbit = createOrbit(77.17383499676886, 78.22215839735765, 0.006772, 3.39471, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0xfffa500);
+			scene.add(venusOrbit);
+
+			// Criar marcador e linha de órbita para Terra
+			var earthMarker = createMarker(0x00ffff, 10);
+			scene.add(earthMarker);
+			const earthOrbit = createOrbit(105.62105981187621, 109.21059596467293, 0.0167086, 0.00005, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x00ffff);
+			scene.add(earthOrbit);
+
+			// Criar marcador e linha de óbrita para a lua
+			var moonMarker = createMarker(0x808080, 7.5); // Marcador Lua
+			scene.add(moonMarker);
+			const moonOrbit = createOrbit(0.2603575788037625, 0.29108925109499534, 0.0549, 0, earthSphere.position.x, earthSphere.position.y, earthSphere.position.z, 0x808080);
+			scene.add(moonOrbit);
+
+			// Criar marcador e linha de órbita para Marte
+			var marsMarker = createMarker(0xff5733, 10);
+			scene.add(marsMarker);
+			const marsOrbit = createOrbit(148.38084296689883, 178.9768076398363, 0.0934, 1.8497, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0xff5733);
+			scene.add(marsOrbit);
+
+			// Criar marcador e linha de órbita para Júpiter
+			var jupiterMarker = createMarker(0xff91a4, 10);
+			scene.add(jupiterMarker);
+			const jupiterOrbit = createOrbit(531.7692252459252, 586.1729015581245, 0.0489, 1.304, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0xff91a4);
+			scene.add(jupiterOrbit);
+
+			// Criar marcador e linha de órbita para Saturno
+			var saturnMarker = createMarker(0xdfd880, 10);
+			scene.add(saturnMarker);
+			const saturnOrbit = createOrbit(971.1711064838084, 1087.4560206792562, 0.0565, 2.485, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0xdfd880);
+			scene.add(saturnOrbit);
+
+			// Criar marcador e linha de órbita para Urano
+			var uranusMarker = createMarker(0x79d2e6, 10);
+			scene.add(uranusMarker);
+			const uranusOrbit = createOrbit(1964.2133984346951, 2158.6773892439146, 0.04717, 0.772, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x79d2e6);
+			scene.add(uranusOrbit);
+
+			// Criar marcador e linha de órbita para Netuno
+			var neptuneMarker = createMarker(0x5353ec, 10);
+			scene.add(neptuneMarker);
+			const neptuneOrbit = createOrbit(3202.4125798808072, 3259.854957995261, 0.008678, 1.769, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x5353ec);
+			scene.add(neptuneOrbit);
+
+			// Criar marcador e linha de órbita para Plutão
+			var plutoMarker = createMarker(0x808080, 10);
+			scene.add(plutoMarker);
+			const plutoOrbit = createOrbit(3185.768650822144, 5296.137000071803, 0.2488, 17.16, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x808080);
+			scene.add(plutoOrbit);
+
+			// Criar marcador e linha de órbita para Caronte
+			var charonMarker = createMarker(0x808080, 10);
+			scene.add(charonMarker);
+			const charonOrbit = createOrbit(0.014064048251597617, 0.014069792489409061, 0.0002, 0, plutoSphere.position.x, plutoSphere.position.y, plutoSphere.position.z, 0x808080);
+			scene.add(charonOrbit);
+
+			// Criar marcador e linha de órbita para Ceres
+			var ceresMarker = createMarker(0x808080, 10);
+			scene.add(ceresMarker);
+			const ceresOrbit = createOrbit(273.56635097293025, 320.72185108063474, 0.07934, 10.585, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x808080);
+			scene.add(ceresOrbit);
+
+			// Criar marcador e linha de órbita para Haumea
+			var haumeaMarker = createMarker(0x808080, 10);
+			scene.add(haumeaMarker);
+			const haumeaOrbit = createOrbit(3777.1663136353845, 5534.702294104976, 0.18874, 28.19, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x808080);
+			scene.add(haumeaOrbit);
+
+			// Criar marcador e linha de órbita para Makemake
+			var makemakeMarker = createMarker(0x808080, 10);
+			scene.add(makemakeMarker);
+			const makemakeOrbit = createOrbit(4136.25705895024, 5700.87441013858, 0.159, 28.962, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x808080);
+			scene.add(makemakeOrbit);
+
+			// Criar marcador e linha de órbita para Éris
+			var erisMarker = createMarker(0x808080, 10);
+			scene.add(erisMarker);
+			const erisOrbit = createOrbit(4057.0916751633517, 10479.477464637035, 0.44177, 44.187, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z, 0x808080);
+			scene.add(erisOrbit);
+
+			// Adicionando identificadores exclusivos aos marcadores
+			sunMarker.userData.name = 'Sol';
+			mercuryMarker.userData.name = 'Mercúrio';
+			venusMarker.userData.name = 'Vênus';
+			earthMarker.userData.name = 'Terra'; earthMarker.userData.closeObject = true;
+			moonMarker.userData.name = 'Lua'; moonMarker.userData.closeObject = true;
+			marsMarker.userData.name = 'Marte';
+			jupiterMarker.userData.name = 'Júpiter';
+			saturnMarker.userData.name = 'Saturno';
+			uranusMarker.userData.name = 'Urano';
+			neptuneMarker.userData.name = 'Netuno';
+			plutoMarker.userData.name = 'Plutão'; plutoMarker.userData.closeObject = true;
+			charonMarker.userData.name = 'Caronte'; charonMarker.userData.closeObject = true;
+			ceresMarker.userData.name = 'Ceres';
+			haumeaMarker.userData.name = 'Haumea';
+			makemakeMarker.userData.name = 'Makemake';
+			erisMarker.userData.name = 'Éris';
+
+			// Criando um objeto para mapear marcadores às esferas correspondentes
+			const celestialObjectMap  = {
+				'Sol': sunSphere,
+				'Mercúrio': mercurySphere,
+				'Vênus': venusSphere,
+				'Terra': earthSphere,
+				'Lua': moonSphere,
+				'Marte': marsSphere, 
+				'Júpiter': jupiterSphere,
+				'Saturno': saturnSphere,
+				'Urano': uranusSphere,
+				'Netuno': neptuneSphere,
+				'Plutão': plutoSphere,
+				'Caronte': charonSphere,
+				'Ceres': ceresSphere,
+				'Haumea': haumeaSphere,
+				'Makemake': makemakeSphere,
+				'Éris': erisSphere
+				// Adicione outros planetas/objetos conforme necessário...
+			};
+
+			//////////////////////////////////////
+			// Variáveis para controle de tempo //
+			//////////////////////////////////////
+
+			// timeElepsed = Posição na órbita em radianos
+			// orbitSpeed = Velocidade do planeta na órbita (negativo pois os planetas orbitam no sentido anti-horário)
+			// multiplicador = Velocidade em segundos
+
+			var currentDate = new Date(); // Data atual
+			let dia = 84600; // Dia terrestre em segundos
+			let ano = 30879000; // Ano terrestre em segundos
+
+			let multiplicador = 1;
+			
+			// Mercúrio
+			let timeElapsedMercury = 2.7; 
+			let rotationSpeedMercury = (2 * Math.PI) / (84600 * 58.6); // Velocidade de Rotação (rad/s) para Mercúrio
+			let orbitSpeedMercury = -(2 * Math.PI) / (84600 * 87.97); // Velocidade de Translação (rad/s) para Mercúrio
+
+			// Vênus
+			let timeElapsedVenus = 6.2; 
+			let rotationSpeedVenus = (2 * Math.PI) / (84600 * 116); // Velocidade de Rotação (rad/s) para Vênus
+			let orbitSpeedVenus = -(2 * Math.PI) / (84600 * 225); // Velocidade de Translação (rad/s) para Vênus
+
+			// Terra
+			let timeElapsedEarth = 3; 
+			let rotationSpeedEarth = (2 * Math.PI) / (84600 * 1); // Velocidade de Rotação (rad/s) para a Terra
+			let orbitSpeedEarth = -(2 * Math.PI) / (84600 * 365); // Velocidade de Translação (rad/s) para a Terra
+
+			// Lua
+			let timeElapsedMoon = 6; 
+			let rotationSpeedMoon = (2 * Math.PI) / (84600 * 27.3); // Velocidade de Rotação (rad/s) para a Lua
+			let orbitSpeedMoon = -(2 * Math.PI) / (84600 * 27.3); // Velocidade de Translação (rad/s) para a Lua
+
+			// Marte
+			let timeElapsedMars = 1.3; 
+			let rotationSpeedMars = (2 * Math.PI) / (84600 * 1.03); // Velocidade de Rotação (rad/s) para a Marte
+			let orbitSpeedMars = -(2 * Math.PI) / (84600 * 687); // Velocidade de Translação (rad/s) para a Marte
+
+			// Jupiter
+			let timeElapsedJupiter = 2.65; 
+			let rotationSpeedJupiter = (2 * Math.PI) / (84600 * 0.41); // Velocidade de Rotação (rad/s) para a Júpiter
+			let orbitSpeedJupiter = -(2 * Math.PI) / (84600 * 365 * 11.86); // Velocidade de Translação (rad/s) para a Júpiter
+
+			// Saturno
+			let timeElapsedSaturn = 5.75; 
+			let rotationSpeedSaturn = (2 * Math.PI) / (84600 * 0.43); // Velocidade de Rotação (rad/s) para a Saturno
+			let orbitSpeedSaturn = -(2 * Math.PI) / (84600 * 365 * 29.5); // Velocidade de Translação (rad/s) para a Saturno
+
+			// Urano
+			let timeElapsedUranus = 1.65; 
+			let rotationSpeedUranus = (2 * Math.PI) / (84600 * 0.72); // Velocidade de Rotação (rad/s) para a Urano
+			let orbitSpeedUranus = -(2 * Math.PI) / (84600 * 365 * 84); // Velocidade de Translação (rad/s) para a Urano
+
+			// Netuno
+			let timeElapsedNeptune = 3.9; 
+			let rotationSpeedNeptune = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedNeptune = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			// Plutão
+			let timeElapsedPluto = 6; 
+			let rotationSpeedPluto = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedPluto = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			// Caronte
+			let timeElapsedCharon = 1; 
+			let rotationSpeedCharon = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedCharon = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			// Ceres
+			let timeElapsedCeres = 2; 
+			let rotationSpeedCeres = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedCeres = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			// Haumea
+			let timeElapsedHaumea = 5; 
+			let rotationSpeedHaumea = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedHaumea = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			// Makemake
+			let timeElapsedMakemake = 3; 
+			let rotationSpeedMakemake = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedMakemake = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			// Éris
+			let timeElapsedEris = 0; 
+			let rotationSpeedEris = (2 * Math.PI) / (84600 * 0.67); // Velocidade de Rotação (rad/s) para a Netuno
+			let orbitSpeedEris = -(2 * Math.PI) / (84600 * 365 * 164.8); // Velocidade de Translação (rad/s) para a Netuno
+
+			//////////////
+			// Animação //
+			//////////////
+			
+			var animate = function () {
+				// Tempo em milissegundos desde o início da animação
+				const elapsedTime = Date.now();
+				const deltaTime = (elapsedTime - previousTime) / 1000;
+				previousTime = elapsedTime;
+
+				// Realocando Objetos Necessários (Marcadores, nuvens e etc)
+				mercuryMarker.position.copy(mercurySphere.position); // Mercúrio
+				venusMarker.position.copy(venusSphere.position); // Vênus
+				earthMarker.position.copy(earthSphere.position); // Terra
+				earthCloudSphere.position.copy(earthSphere.position); // Nuvens da Terra
+				moonMarker.position.copy(moonSphere.position); // Lua
+				moonOrbit.position.copy(earthSphere.position); // Órbita da Lua
+				marsMarker.position.copy(marsSphere.position); // Marte
+				jupiterMarker.position.copy(jupiterSphere.position); // Júpiter
+				saturnMarker.position.copy(saturnSphere.position); // Saturno
+				uranusMarker.position.copy(uranusSphere.position); // Urano
+				neptuneMarker.position.copy(neptuneSphere.position); // Netuno
+				plutoMarker.position.copy(plutoSphere.position); // Plutão
+				charonMarker.position.copy(charonSphere.position); // Caronte
+				charonOrbit.position.copy(plutoSphere.position); // Órbita da Lua
+				ceresMarker.position.copy(ceresSphere.position); // Ceres
+				haumeaMarker.position.copy(haumeaSphere.position); // Haumea
+				makemakeMarker.position.copy(makemakeSphere.position); // Makemake
+				erisMarker.position.copy(erisSphere.position); // Éris
+
+				// Atualizando posição dos planetas/objetos na órbita
+				if (cameraTargetObject == 'Sol' || cameraTargetObject == 'Sistema'){
+					timeElapsedMercury = updatePlanetPosition(mercurySphere, timeElapsedMercury, orbitSpeedMercury * deltaTime * multiplicador, 33.029367415811016, 50.13283549938968, 0.205630, 7.005, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Mercúrio
+					timeElapsedVenus = updatePlanetPosition(venusSphere, timeElapsedVenus, orbitSpeedVenus * deltaTime * multiplicador, 77.17383499676886, 78.22215839735765, 0.006772, 3.39471, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Vênus
+					timeElapsedEarth = updatePlanetPosition(earthSphere, timeElapsedEarth, orbitSpeedEarth * deltaTime * multiplicador, 105.62105981187621, 109.21059596467293, 0.0167086, 0.00005, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Terra
+					timeElapsedMoon = updatePlanetPosition(moonSphere, timeElapsedMoon, orbitSpeedMoon * deltaTime * multiplicador, 0.2603575788037625, 0.29108925109499534, 0.0549, 0, earthSphere.position.x, earthSphere.position.y, earthSphere.position.z); // Lua
+					timeElapsedMars = updatePlanetPosition(marsSphere, timeElapsedMars, orbitSpeedMars * deltaTime * multiplicador, 148.38084296689883, 178.9768076398363, 0.0934, 1.8497, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Marte
+					timeElapsedJupiter = updatePlanetPosition(jupiterSphere, timeElapsedJupiter, orbitSpeedJupiter * deltaTime * multiplicador, 531.7692252459252, 586.1729015581245, 0.0489, 1.304, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Jupiter
+					timeElapsedSaturn = updatePlanetPosition(saturnSphere, timeElapsedSaturn, orbitSpeedSaturn * deltaTime * multiplicador, 971.1711064838084, 1087.4560206792562, 0.0565, 2.485, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Saturno
+					timeElapsedUranus = updatePlanetPosition(uranusSphere, timeElapsedUranus, orbitSpeedUranus * deltaTime * multiplicador, 1964.2133984346951, 2158.6773892439146, 0.04717, 0.772, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Urano
+					timeElapsedNeptune = updatePlanetPosition(neptuneSphere, timeElapsedNeptune, orbitSpeedNeptune * deltaTime * multiplicador, 3202.4125798808072, 3259.854957995261, 0.008678, 1.769, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Netuno
+					timeElapsedPluto = updatePlanetPosition(plutoSphere, timeElapsedPluto, orbitSpeedPluto * deltaTime * multiplicador, 3185.768650822144, 5296.137000071803, 0.2488, 17.16, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Plutão
+					timeElapsedCharon = updatePlanetPosition(charonSphere, timeElapsedCharon, orbitSpeedCharon * deltaTime * multiplicador, 0.014064048251597617, 0.014069792489409061, 0.0002, 0, plutoSphere.position.x, plutoSphere.position.y, plutoSphere.position.z); // Caronte
+					timeElapsedCeres = updatePlanetPosition(ceresSphere, timeElapsedCeres, orbitSpeedCeres * deltaTime * multiplicador, 273.56635097293025, 320.72185108063474, 0.07934, 10.585, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Ceres
+					timeElapsedHaumea = updatePlanetPosition(haumeaSphere, timeElapsedHaumea, orbitSpeedHaumea * deltaTime * multiplicador, 3777.1663136353845, 5534.702294104976, 0.18874, 28.19, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Haumea
+					timeElapsedMakemake = updatePlanetPosition(makemakeSphere, timeElapsedMakemake, orbitSpeedMakemake * deltaTime * multiplicador, 4136.25705895024, 5700.87441013858, 0.159, 28.962, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Makemake
+					timeElapsedEris = updatePlanetPosition(erisSphere, timeElapsedEris, orbitSpeedEris * deltaTime * multiplicador, 4057.0916751633517, 10479.477464637035, 0.44177, 44.187, sunSphere.position.x, sunSphere.position.y, sunSphere.position.z); // Éris
+				}
+				
+				// Condições para exibir marcador e órbita da lua
+				if (cameraTargetObject == 'Terra' || cameraTargetObject == 'Lua'){
+					moonOrbit.visible = true;
+					moonMarker.visible = true;
+				}else{
+					moonOrbit.visible = false;
+					moonMarker.visible = false;
+				}
+
+				// Condições para exibir marcador e órbita de caronte
+				if (cameraTargetObject == 'Plutão' || cameraTargetObject == 'Caronte'){
+					charonOrbit.visible = true;
+					charonMarker.visible = true;
+				}else{
+					charonOrbit.visible = false;
+					charonMarker.visible = false;
+				}
+
+				// Rotação dos objetos
+				mercurySphere.rotation.y += rotationSpeedMercury * deltaTime * multiplicador; // Mercúrio
+
+				venusSphere.rotation.y += rotationSpeedVenus * deltaTime * multiplicador; // Vênus
+
+				earthSphere.rotation.y += rotationSpeedEarth * deltaTime * multiplicador; // Terra
+				earthCloudSphere.rotation.y += rotationSpeedEarth * deltaTime * multiplicador; // Terra de nuvens
+ 
+				moonSphere.rotation.y += rotationSpeedMoon * deltaTime * multiplicador; // Lua
+
+				marsSphere.rotation.y += rotationSpeedMars * deltaTime * multiplicador; // Marte
+
+				jupiterSphere.rotation.y += rotationSpeedJupiter * deltaTime * multiplicador; // Júpiter
+
+				saturnSphere.rotation.y += rotationSpeedSaturn * deltaTime * multiplicador; // Saturno
+
+				uranusSphere.rotation.y += rotationSpeedUranus * deltaTime * multiplicador; // Urano
+
+				neptuneSphere.rotation.y += rotationSpeedNeptune * deltaTime * multiplicador; // Netuno
+
+				plutoSphere.rotation.y += rotationSpeedPluto * deltaTime * multiplicador; // Plutão
+
+				charonSphere.rotation.y += rotationSpeedCharon * deltaTime * multiplicador; // Caronte
+
+				ceresSphere.rotation.y += rotationSpeedCeres * deltaTime * multiplicador; // Ceres
+
+				haumeaSphere.rotation.y += rotationSpeedHaumea * deltaTime * multiplicador; // Haumea
+
+				makemakeSphere.rotation.y += rotationSpeedMakemake * deltaTime * multiplicador; // Makemake
+
+				erisSphere.rotation.y += rotationSpeedEris * deltaTime * multiplicador; // Éris
+
+				// Atualiza opacidade da linha de órbita e marcador
+				updateOpacity(mercuryOrbit, mercuryMarker, mercurySphere); // Mercúrio
+				updateOpacity(venusOrbit, venusMarker, venusSphere); // Vênus
+				updateOpacity(earthOrbit, earthMarker, earthSphere); // Terra
+				updateOpacity(moonOrbit, moonMarker, moonSphere); // Lua
+				updateOpacity(marsOrbit, marsMarker, marsSphere); // Marte
+				updateOpacity(jupiterOrbit, jupiterMarker, jupiterSphere); // Júpiter
+				updateOpacity(saturnOrbit, saturnMarker, saturnSphere); // Saturno
+				updateOpacity(uranusOrbit, uranusMarker, uranusSphere); // Urano
+				updateOpacity(neptuneOrbit, neptuneMarker, neptuneSphere); // Netuno
+				updateOpacity(plutoOrbit, plutoMarker, plutoSphere); // Plutão
+				updateOpacity(charonOrbit, charonMarker, charonSphere); // Caronte
+				updateOpacity(ceresOrbit, ceresMarker, ceresSphere); // Ceres
+				updateOpacity(haumeaOrbit, haumeaMarker, haumeaSphere); // Haumea
+				updateOpacity(makemakeOrbit, makemakeMarker, makemakeSphere); // Makemake
+				updateOpacity(erisOrbit, erisMarker, erisSphere); // Éris
+
+				// Animações de câmera e renderização
+				requestAnimationFrame( animate );
+
+				const target = controls1.target;
+				controls1.update();
+
+				controls2.target.set(target.x, target.y, target.z)
+				controls2.update();
+
+				TWEEN.update(); // Atualiza as animações do Tween.js
+
+				renderer.render( scene, camera );
+			};
+
+			// Inicializando previousTime
+			let previousTime = Date.now();
+
+			animate();
+
+			////////////////////////
+			// Funções Auxiliares //
+			////////////////////////
+
+			// Adicione o evento de clique à janela
+			window.addEventListener('mousedown', onDocumentMouseDown, false);
+
+			// Trocando o texto da div e modificando multiplicador conforme o slider
+			var elem = document.querySelector('input[type="range"]');
+
+			var rangeValue = function(){
+				var newValue = elem.value;
+				var target = document.querySelector('.value');
+				switch (parseInt(newValue)){
+					case 0:
+						newValue = '-3 ANOS/S';
+						multiplicador = -ano * 3;
+						break;
+					case 1:
+						newValue = '-1 ANO/S';
+						multiplicador = -ano;
+						break;
+					case 2:
+						newValue = '-6 MESES/S';
+						multiplicador = -ano * 0.5;
+						break;
+					case 3:
+						newValue = '-3 MESES/S';
+						multiplicador = -ano * 0.25;
+						break;
+					case 4:
+						newValue = '-1 MÊS/S';
+						multiplicador = -dia * 30;
+						break;
+					case 5:
+						newValue = '-1 DIA/S';
+						multiplicador = -dia;
+						break;
+					case 6:
+						newValue = 'TAXA REAL';
+						multiplicador = 1;
+						break;
+					case 7:
+						newValue = '1 DIA/S';
+						multiplicador = dia;
+						break;
+					case 8:
+						newValue = '1 MÊS/S';
+						multiplicador = dia * 30;
+						break;
+					case 9:
+						newValue = '3 MESES/S';
+						multiplicador = ano * 0.25;
+						break;
+					case 10:
+						newValue = '6 MESES/S';
+						multiplicador = ano * 0.5;
+						break;
+					case 11:
+						newValue = '1 ANO/S';
+						multiplicador = ano;
+						break;
+					case 12:
+						newValue = '3 ANOS/S';
+						multiplicador = ano * 3;
+						break;
+					default:
+						newValue = '';
+				}
+				target.innerHTML = newValue;
+			}
+
+			elem.addEventListener("input", rangeValue);
+
+			// Função para atualizar a hora
+			function updateDateTime() {
+				// Atualiza a data e hora com base no multiplicador
+				currentDate.setTime(currentDate.getTime() + (1000 / 60) * multiplicador); // Incrementa o tempo em segundos
+
+				// Exibe a data formatada na interface (dia, mês abreviado e ano)
+				var dateElement = document.querySelector('.date');
+				dateElement.textContent = formatarData(currentDate);
+
+				// Exibe a hora formatada na interface (hh:mm:ss)
+				var timeElement = document.querySelector('.time');
+				timeElement.textContent = formatarHora(currentDate);
+			}
+
+			// Chame a função updateDateTime 60 vezes por segundo
+			setInterval(updateDateTime, 1000 / 60);
+
+			// Formatar data
+			function formatarData(data) {
+				const mesesAbreviados = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+				const dia = String(data.getDate()).padStart(2, '0');
+				const mesAbreviado = mesesAbreviados[data.getMonth()];
+				const ano = String(data.getFullYear()).slice(-2);
+				return `${dia} ${mesAbreviado} ${ano}`;
+			}
+
+			// Formatar hora
+			function formatarHora(data) {
+				const horas = String(data.getHours()).padStart(2, '0');
+				const minutos = String(data.getMinutes()).padStart(2, '0');
+				const segundos = String(data.getSeconds()).padStart(2, '0');
+				return `${horas}:${minutos}:${segundos}`;
+			}
+			
+			// Seletor do slider
+			const slider = document.getElementById("timeMultiplierSlider");
+
+			// Função para desativar o evento onDocumentMouseDown
+			function disableMouseDownEvent() {
+				window.removeEventListener('mousedown', onDocumentMouseDown, false);
+			}
+
+			// Função para ativar o evento onDocumentMouseDown
+			function enableMouseDownEvent() {
+				window.addEventListener('mousedown', onDocumentMouseDown, false);
+			}
+
+			// Adiciona um ouvinte de onDocumentMouseDown quando o mouse entra no slider
+			slider.addEventListener("mouseenter", disableMouseDownEvent);
+
+			// Adiciona um ouvinte de onDocumentMouseDown quando o mouse sai do slider
+			slider.addEventListener("mouseleave", enableMouseDownEvent);
+
+			// Listener para atualiza tamanho do render
+			window.addEventListener('resize', () => {
+				const newWidth = window.innerWidth;
+				const newHeight = window.innerHeight;
+
+				renderer.setSize(newWidth, newHeight);
+
+				camera.aspect = newWidth / newHeight;
+				camera.updateProjectionMatrix();
+			});
+
+			// Listener para exibir os cards
+			window.addEventListener('click', () => {
+				if(cameraTargetObject == 'Sistema'){document.getElementById("sistema-card").style.display = "block";}
+				else{document.getElementById("sistema-card").style.display = "none";} // Sol
+
+				if(cameraTargetObject == 'Sol'){document.getElementById("sun-card").style.display = "block";}
+				else{document.getElementById("sun-card").style.display = "none";} // Sol
+
+				if(cameraTargetObject == 'Mercúrio'){document.getElementById("mercury-card").style.display = "block";}
+				else{document.getElementById("mercury-card").style.display = "none";} // Mercúrio
+
+				if(cameraTargetObject == 'Vênus'){document.getElementById("venus-card").style.display = "block";}
+				else{document.getElementById("venus-card").style.display = "none";} // Vênus
+
+				if(cameraTargetObject == 'Terra'){document.getElementById("earth-card").style.display = "block";}
+				else{document.getElementById("earth-card").style.display = "none";} // Terra
+
+				if(cameraTargetObject == 'Lua'){document.getElementById("moon-card").style.display = "block";}
+				else{document.getElementById("moon-card").style.display = "none";} // Lua
+
+				if(cameraTargetObject == 'Marte'){document.getElementById("mars-card").style.display = "block";}
+				else{document.getElementById("mars-card").style.display = "none";} // Marte
+
+				if(cameraTargetObject == 'Júpiter'){document.getElementById("jupiter-card").style.display = "block";}
+				else{document.getElementById("jupiter-card").style.display = "none";} // Júpiter
+
+				if(cameraTargetObject == 'Saturno'){document.getElementById("saturn-card").style.display = "block";}
+				else{document.getElementById("saturn-card").style.display = "none";} // Saturno
+
+				if(cameraTargetObject == 'Urano'){document.getElementById("uranus-card").style.display = "block";}
+				else{document.getElementById("uranus-card").style.display = "none";} // Urano
+
+				if(cameraTargetObject == 'Netuno'){document.getElementById("neptune-card").style.display = "block";}
+				else{document.getElementById("neptune-card").style.display = "none";} // Netuno
+
+				if(cameraTargetObject == 'Plutão'){document.getElementById("pluto-card").style.display = "block";}
+				else{document.getElementById("pluto-card").style.display = "none";} // Pluto
+
+				if(cameraTargetObject == 'Caronte'){document.getElementById("charon-card").style.display = "block";}
+				else{document.getElementById("charon-card").style.display = "none";} // Caronte
+			});
+
+			// Evento de clique no botão "Sistema Solar"
+			const botaoSistemaSolar = document.getElementById('sistema-solar-title');
+			botaoSistemaSolar.addEventListener('click', moverCameraParaSistemaSolar);
+
+			//////////////////////////
+			// Manipulação de Cenas //
+			//////////////////////////
+
+			// Chamando função para criar uma cena com objetos 
+			/* const scene1Group = createSceneGroup(
+				starField,
+				asteroidBeltSaturn,
+				sunSphere,
+				glowSprite,
+				mercurySphere,
+				venusSphere,
+				earthSphere,
+				moonSphere,
+				sunMarker,
+				mercuryMarker,
+				venusMarkerq,
+				earthMarker,
+				moonMarker
+			);
+
+			scene.add(scene1Group);
+			scene1Group.visible = true; */
+		</script>
+	</body>
+</html>

@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<title>Sistema Solar</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<div class="button-container">
+			<button class="button" id="toggleAxesHelper">Desligar AxesHelper</button>
+			<button class="button" id="toggleGridHelper">Desligar GridHelper</button>
+		</div>
+		<script src="js/three.js/three.js"></script> <!-- three.js -->
+		<script src="js/controls/OrbitControls.js"></script> <!-- OrbitControls -->
+		<script src="js/functions.js"></script> <!-- utilitarios -->
+		<script>
+			// Preparação básica
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.001, 1000000000);
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+			// Helpers
+			const gridHelper = new THREE.GridHelper(20,20); // Cria um guia de grid na altura da origem
+			scene.add(gridHelper);
+
+			const axesHelper = new THREE.AxesHelper(1000000); // Cria um guia para os eixos cartesianos
+			scene.add(axesHelper);
+
+			// Luz ambiente - Intensidade 0.8 e branca
+			const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+			scene.add(ambientLight);
+			
+			// Luz Direcional - Intensidade 2 e branca
+			const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+			directionalLight.position.set(-10, 0, 10);
+			directionalLight.target.position.set(0, 0, 0);
+			scene.add(directionalLight);
+
+			// Carrega a textura
+			var loader = new THREE.TextureLoader();
+
+			// Carregando imagens/texturas com o loader
+			var earthColorMap = loader.load("img/planetas/terra/colorearth.jpg"); // ColorMap Terra
+			var normalMap = loader.load("img/planetas/terra/normalearth.jpg"); // NormalMap Terra
+			var specMap = loader.load("img/planetas/terra/specularearth.jpg"); // SpecularMap Terra
+
+			var asteroidColorMap = loader.load("img/misc/asteroid.jpg"); // ColorMap Asteroide
+
+			// Estrelas - Sistema de partículas
+			var starsGeometry = new THREE.BufferGeometry();
+			var starsMaterial = new THREE.PointsMaterial({
+				color: 0xFFFFFF,
+				size: 1.5,
+				//sizeAttenuation: false
+			});
+
+			var numStars = 9096; // Número de estrelas
+			var sphereRadius = 1000000; // Escala do campo de estrelas
+			var positions = new Float32Array(numStars * 3); // Cada estrela tem 3 coordenadas (x, y, z)
+
+			// Preencher o buffer de posições com coordenadas aleatórias dentro de um intervalo
+			for (var i = 0; i < numStars; i++) {
+				var u = Math.random();
+				var v = Math.random();
+				var theta = 2 * Math.PI * u;
+				var phi = Math.acos(2 * v - 1);
+				var radius = sphereRadius * Math.cbrt(Math.random()); // Distribuição dentro da esfera
+				var x = radius * Math.sin(phi) * Math.cos(theta);
+				var y = radius * Math.sin(phi) * Math.sin(theta);
+				var z = radius * Math.cos(phi);
+				
+				positions[i * 3] = x; // Coordenada X
+				positions[i * 3 + 1] = y; // Coordenada Y
+				positions[i * 3 + 2] = z; // Coordenada Z
+			}
+
+			starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+			var starField = new THREE.Points(starsGeometry, starsMaterial);
+			scene.add(starField); // Adicionar a cena
+
+			// Materiais
+			var earthMaterial = new THREE.MeshPhongMaterial({ // Terra
+				color: 0xffffff,
+				map: earthColorMap,
+				normalMap: normalMap,
+				specularMap: specMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			var asteroidMaterial = new THREE.MeshPhongMaterial({ // Asteroide
+				color: 0xffffff,
+				map: asteroidColorMap,
+				specular: 0x333333,
+				shininess: 15
+			});
+
+			// Esfera
+			const geometry = new THREE.SphereGeometry( 0.1, 64, 32 );
+			const sphere1 = new THREE.Mesh( geometry, earthMaterial);
+
+			// Adicionando elementos a cena
+			scene.add(sphere1);			
+			
+			// Posição inicial da câmera
+			camera.position.x = 4;
+			camera.position.y = 4;
+			camera.position.z = 4;
+
+			// Função para criar um cinturão de asteroides
+			function createAsteroidBelt(numAsteroids, radius, minSize, maxSize, bandWidth, bandHeight) {
+				var asteroidGroup = new THREE.Group(); // Criar um grupo para o cinturão de asteroides
+
+				for (var i = 0; i < numAsteroids; i++) {
+					var angle = Math.random() * (2 * Math.PI);
+					var tamAsteroide = minSize + Math.random() * (maxSize - minSize);
+					var distance = radius + (Math.random() * bandWidth - bandWidth / 2); // Distribuição ao longo do raio com largura de banda
+					var height = Math.random() * bandHeight - bandHeight / 2; // Altura dentro da banda
+					
+					var asteroidGeometry = new THREE.IcosahedronGeometry(tamAsteroide, 0);
+					var asteroid = new THREE.Mesh(asteroidGeometry, asteroidMaterial);
+					
+					asteroid.position.set(Math.sin(angle) * distance, Math.cos(angle) * distance, height);
+					asteroid.rotation.set(Math.random() * (2 * Math.PI), Math.random() * (2 * Math.PI), Math.random() * (2 * Math.PI));
+
+					asteroid.radius = distance;
+					asteroid.velocity = Math.random() * 0.1;
+					
+					asteroidGroup.add(asteroid); // Adicionar o asteroide ao grupo
+				}
+				
+				return asteroidGroup; // Retornar o grupo
+			}
+
+			// Criar o cinturão de asteroides - número de asteroides / raio / tamanho min/max dos asteroides / larguda da banda / altura da banda /
+			var asteroidBelt = createAsteroidBelt(4000, 4, 0.01, 0.018, 3, 0.1);
+			scene.add(asteroidBelt); // Adicionar o grupo à cena
+
+			// Manipular o grupo como um único objeto 3D
+			asteroidBelt.position.y = 0;
+			asteroidBelt.rotateX(Math.PI / 2);
+			asteroidBelt.scale.set(0.05, 0.05, 0.05); // Diminuindo a escala
+
+			// Marcador
+			var starGeometry = new THREE.BufferGeometry();
+			var starMaterial = new THREE.PointsMaterial({
+				color: 0xFFFF00, // Cor amarela
+				size: 10,
+				sizeAttenuation: false
+			});
+
+			var starPosition = new THREE.Vector3(0, 0, 0); // Defina a posição da estrela aqui
+
+			var starVertices = new Float32Array(3);
+			starVertices[0] = starPosition.x;
+			starVertices[1] = starPosition.y;
+			starVertices[2] = starPosition.z;
+
+			starGeometry.setAttribute('position', new THREE.BufferAttribute(starVertices, 3));
+			var star = new THREE.Points(starGeometry, starMaterial);
+			scene.add(star); // Adicionar à cena
+
+			// Animações
+			var animate = function () {
+				// Legenda Terra
+
+				// Rotação Terra
+				sphere1.rotation.y += 0.001; // Rotação
+
+				// Rotação Cinturão
+				asteroidBelt.rotation.z += 0.001; // Rotação
+
+				// Teste Marcadores
+
+				requestAnimationFrame( animate );
+				controls.update();
+				renderer.render( scene, camera );
+			};
+			animate();
+
+			sceneAdd('toggleAxesHelper', axesHelper, 'AxesHelper');
+			sceneAdd('toggleGridHelper', gridHelper, 'GridHelper');
+		</script>
+	</body>
+</html>

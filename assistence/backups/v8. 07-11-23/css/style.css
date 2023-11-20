@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+body {
+    font-family: 'Roboto-Light', sans-serif;
+    margin: 0;
+}
+
+canvas {
+    width: 100%;
+    height: 100%
+}
+
+/* Estilo do contêiner do slider */
+.slider-container {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    user-select: none; /* Cursor */
+}
+
+.value {
+    position: absolute;
+    text-align: center;
+    font-size: 1.5em; /* Tamanho ajustado para ser semelhante ao slider */
+    width: 200px; /* Ajuste o tamanho do elemento .value conforme necessário */
+    left: 50%; /* Centralize horizontalmente */
+    transform: translateX(-50%); /* Centralize horizontalmente */
+    top: -50px; /* Posição vertical ajustada para ficar sobre o slider */
+    letter-spacing: -.07em;
+    color: white;
+}
+
+.date {
+    position: absolute;
+    text-align: left;
+    font-size: 1.5em;
+    width: 200px;
+    left: 25%;
+    transform: translateX(-50%);
+    top: -50px;
+    letter-spacing: -.07em;
+    color: white;
+}
+
+.time {
+    position: absolute;
+    text-align: left;
+    font-size: 1.5em;
+    width: 200px;
+    left: 100%;
+    transform: translateX(-50%);
+    top: -50px;
+    letter-spacing: -.07em;
+    color: white;
+}
+
+input[type="range"] {
+    display: block;
+    appearance: none;
+    background: linear-gradient(to right, rgba(192, 192, 192, 0), rgba(192, 192, 192, 1), rgba(192, 192, 192, 0));
+    width: 500px;
+    height: 5px;
+    margin: 0 auto;
+    outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #242424;
+    width: 25px;
+    height: 25px;
+    border: 2px solid white;
+    cursor: grab;
+    transition: .3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: grey;
+}
+    
+input[type="range"]::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+/* Estilo do card */
+.card {
+    color: white;
+    position: absolute;
+    left: 20px; /* Ajuste para posicionar onde desejar */
+    top: 60px; /* Ajuste para posicionar onde desejar */
+    padding: 20px;
+    width: 20%;
+    height: 80%;
+    border-radius: 2px;
+    z-index: 999; /* Certifica de que ele esteja na parte superior */
+    background: linear-gradient(to bottom, rgba(36, 36, 36, 1), rgba(36, 36, 36, 0.9), rgba(36, 36, 36, 0)); /* Fundo degradê do cinza para transparente */
+    overflow-y: auto;
+}
+
+/* Estilo da barra de rolagem */
+.card::-webkit-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+}
+
+.card::-webkit-scrollbar-thumb {
+    background-color: rgb(136, 136, 136, 0.1); /* Cor do polegar (o "botão" da barra de rolagem) */
+    border-radius: 4px; /* Borda arredondada para o polegar */
+}
+
+.card::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(136, 136, 136, 1); /* Cor do polegar quando o mouse estiver sobre ele */
+}
+
+.card::-webkit-scrollbar-track {
+    background: transparent; /* Cor da faixa de fundo da barra de rolagem */
+}
+
+/* Estilo do título */
+#sistema-solar-title {
+    position: absolute;
+    display: flex;
+    color: grey;
+    font-size: 16pt;
+    letter-spacing: 4px;
+    font-weight: bold;
+    top: 18px;
+    left: 20px;
+    background-color: transparent;
+    margin-bottom: 20px;
+    z-index: 1;
+    border: none;
+    padding: 0px;
+}
+
+#sistema-solar-title:hover {
+    color:  rgb(180, 180, 180);
+    cursor: pointer;
+}
+
+/* Estilo do nome do objeto selecionado ao lado do título */
+#sistema-solar-object {
+    position: absolute;
+    display: flex;
+    color: rgb(180, 180, 180);
+    font-size: 14pt;
+    letter-spacing: 4px;
+    font-weight: bold;
+    top: 20px;
+    left: 260px;
+    background-color: transparent;
+    margin-bottom: 20px;
+    z-index: 1;
+    border: none;
+    padding: 0px;
+}
+
+#sistema-solar-object:hover {
+    cursor: pointer;
+}
+
+#object-name {
+    display: inline-block;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.explorar-button {
+    color: rgb(255, 196, 0);
+    padding-bottom: 0px;
+    background-color: transparent;
+    border: none;
+    padding-top: 10px;
+    float: right;
+    font-size: 10pt;
+    letter-spacing: 2px;
+    transition: transform 0.2s;
+}
+
+.explorar-button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    text-shadow: 0 0 5px rgba(255, 196, 0, 0.7);
+}
+
+h4 {
+    color: grey;
+    padding-bottom: 0px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Comece com opacidade 0 */
+    transition: opacity 0.5s; /* Adicione uma transição de 0.3 segundos */
+}
+
+#loading-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid rgb(180, 180, 180);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+#loading-text {
+    font-weight: bold;
+    font-size: 16pt;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
