@@ -7,4 +7,4 @@ Este repositório contém um Sistema Solar desenvolvido em Three.js. Meu projeto
 * Felipe Pinto da Silva
 
 ### Requisitos para visualizar o projeto no site
-Devido o projeto implementar um sistema 3D, textura de altas resoluções e uma tecnologia de anti serrilhado, para uma experiência fluida e agradável, é altamente recomentado ligar a aceleração de hardware do seu navegador.
+Devido o projeto implementar um sistema 3D, textura de alta resolução e um recurso de anti serrilhado, para uma experiência fluida e agradável, é altamente recomentado ligar a aceleração de hardware do seu navegador.
