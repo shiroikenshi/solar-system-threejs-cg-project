@@ -5,3 +5,6 @@ This repository contains a Solar System developed in Three.js. My project provid
 
 ### Author
 * Felipe Pinto da Silva
+
+### Requirements to view the project on the website
+As the project implements a 3D system, high-resolution textures, and anti-aliasing feature for a smooth and pleasant experience, it is highly recommended to enable hardware acceleration in your browser.
